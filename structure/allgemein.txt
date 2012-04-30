@@ -11,6 +11,8 @@
 3		int	aktuelle Runde
 5		int	ausgeloste Runden
 7		int	Teilnehmerzahl
+9		int	Anzahl der Streichwertungen (Buchh., Feinw.)
+B		int	Anzahl der Runden mit Test auf Vereinsgleichheit
 AF		int	Turnierueberschrift Zeile 1 Positionskorrektur
 B0		boo	Turnierueberschrift Zeile 1 zentrieren
 B2		int	Turnierueberschrift Zeile 1 Schriftgrad
@@ -23,29 +25,44 @@ F5	130	asc	Turnierueberschrift Zeile 1
 137		boo	Turnierueberschrift Zeile 2 Schriftschnitt fett
 13B	149+	asc	Turnierueberschrift Zeile 2 Schriftart
 178	1B4	asc	Turnierueberschrift Zeile 2
+238		int	Maximale Farbdifferenz
+23A		int	Maximale Farbgleichheit
 23C		sel	Feinwertung Einzelspieler 2
+23E		boo	Kampflose Punkte in Partiezählung (SRV) werten
+243		boo	Rangliste mit deaktivierten Mannschaften
 246		sel	TWZ Ermittlung
+249		int	Runde(n?) mit erzwungenem Farbausgleich
 24A		int	Spieleranzahl für mittlere Wertung (0=alle)
+24C		boo	Kampflose Partien erneut setzen
+24D		bin	(CH) Paarungsermittlung nach (00 = FIDE, 01 = Rangliste, ??)
+251		boo	(CH) Siege als letzte Wertung
 25C		int	Bretter
 25E		boo	Mannschaftsturnier
 261	262	inb	_FILEVERSION_
-263		bin	Erste Wertung Mannschaft	
-265		sel	Feinwertung Mannschaft 1
-267		sel	Feinwertung Mannschaft 2
+263		sel	Feinwertung Mannschaft 1
+265		sel	Feinwertung Mannschaft 2
+267		sel	Feinwertung Mannschaft 3
 26D		sel	Feinwertung Einzelspieler 1
 26F		boo	Mannschafts-Gewinnmodus (00 = Punkte A > B, FF = Mindestpunkte (4,5/8))
+272	273	inb	Pseudowertung für Spieler ohne NWZ/TWZ
+278		boo	Gleiche Rangnummer bei gleicher Feinwertung
+27C		int	Anzahl der Runden mit Test auf Verbandsgleichheit
+28C		boo	KO-Turnier-Siege mit voller Punktzahl ins CH-System übernehmen
 2D2		boo	03 Mannschaftsliste sichtbar
 2D3		int	Position Fenster 2D2 vom oberen Rand in px
 316	33D	asc	Turniername
 33F	366	asc	Ort/Land
-368	3A3	asc	Turnierleitung
-3A5	3E0	asc	Schiedsrichter
+368	3A3	asc	Schiedsrichter
+3A5	3E0	asc	Weitere Schiedsrichter
 3E2	41D	asc	Bemerkung
 41F	432	asc	Datum Start
 434	447	asc	Datum Ende
 449	45C	asc	1. Periode Züge/Std.
 45E	471	asc	2. Periode Züge/Std.
 473	487	asc	3. Periode Züge/Std.
+52C		int	Maximal speicherbare Mannschaften (MaxMann)
+52E		int	?- Spieler/Mannschaft *2
+52F		int	Spieler/Mannschaft
 530		boo	Farbe des 1. Spl. in Runde 1 (00, 01 = Weiß, FF = Schwarz)
 531		boo	Farbe Brt. 1 der Heim-Mannsch. (00 = Schwarz, FF = Weiß)
 534		int	Mannschaftszahl
