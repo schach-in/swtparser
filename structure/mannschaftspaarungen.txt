@@ -1,0 +1,17 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for results
+# Defintionsdatei für Ergebnisse
+#
+# [start] [end] [type] [content]
+0	1	bin	
+8		sel	Ort
+9		bin	Gegner
+A		bin	
+B		sel	Mannschaftsergebnis
+D		int	Tisch
+F		sel	Status
+11		bin	
+12		int	Brett

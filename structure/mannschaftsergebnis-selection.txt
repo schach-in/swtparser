@@ -1,0 +1,24 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for single result values
+# Definitionsdatei für Einzelergebnisse
+#
+# [bin] [value]
+00	
+01	
+02	
+03	
+04	0
+05	0
+06	0
+07	0
+08	.5
+09	.5
+0A	.5
+0B	.5
+0C	1
+0D	1
+0E	1
+0F	1

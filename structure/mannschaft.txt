@@ -1,0 +1,51 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for team data
+# Definitionsdatei für Mannschaftsdaten
+# length of data: 0x28F (= 655)
+#
+# [start] [end] [type] [content]
+0	1F	asc	Mannschaft
+46	49	asc	FIDE-Elo-Schnitt
+4B	4E	asc	DWZ-Schnitt
+50	53	asc	DWZ-Schnitt (?)
+5A	5E	asc	TlnKenn.
+69	6B	asc	Land
+6D	6F	asc	Verband
+80	89	asc	Datum
+99	9D	asc	ZPS Vereins-Nr.
+B8		asc	Attribut
+BC		asc	Selekt
+C0	C2	asc	Wahl1, Wahl2, Wahl3
+C9		int	MNr. Rangliste (??)
+CB		int	erstes Brett
+CD		int	erstes Brett (?)
+CF		int	Beginn Spieler: TNr.-ID - 1
+D5		int	Spielerzahl
+D7		int	MNr. Rangliste (?)
+D9		bin	MNr.-ID
+DB		int	MNr.
+DD		int	Platz (aktuelle Runde ?)
+DF		int	Platz (letzte Runde ?)
+E1		int	Spiele gesamt
+E3		int	Spiele gewonnen
+E5		int	Spiele unentschieden
+E7		int	Spiele verloren
+FB	FC	bin		
+FE		int
+100	101	bin
+102		int
+106	107	bin
+110		bin	Sonderpunkte *2 bzw. abzgl. von 00 
+111		boo	Sonderpunkte positiv (bool 00 positiv, FF negativ)
+124		int	Mannschaftspunkte *2
+128		int	Brettpunkte *2
+12C		int	Buchholz *2
+134		int	Wertung 1 (?)
+138		int	Wertung 2 (?)
+15E	185	asc	Info 1
+187	1AE	asc	Info 2
+1B0	1D7	asc	Info 3
+1D9	200	asc	Info 4

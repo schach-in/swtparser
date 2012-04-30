@@ -1,0 +1,44 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for player data
+# Defintionsdatei für Spielerdaten
+# length of data: 0x124 (= 292)
+#
+# [start] [end] [type] [content]
+0	1F	asc	Spielername
+21	40	asc	Mannschaft
+42	44	asc	FIDE-Titel
+46	49	asc	FIDE-Elo
+4B	4E	asc	NWZ
+5A	5E	asc	TlnKenn.
+61	66	asc	letzte fünf Stellen von PKZ
+69	6B	asc	Land
+6D	6F	asc	Verband
+80	89	asc	Geburtsdatum
+8B	91	asc	FIDE-ID
+97		asc	ZPS Mgl. Status
+99	9D	asc	ZPS Vereins-Nr.
+9F	A1	asc	ZPS Mitglieds-Nr.
+AD		int	Spiele ausgesetzt
+B8		asc	Attribut (*=inaktiv)
+BC		asc	Selekt
+C0	C2	asc	Wahl1, Wahl2, Wahl3
+C9		bin	MNr.
+CB		int	Brett
+CD		int	Brett (?)
+D1		int	TNr. (?)
+D9		bin	TNr.-ID
+DB		int	TNr.
+DD		int	Platz
+DF		int	Platz Brettwertung
+E1		int	Spiele gesamt
+E3		int	Spiele gewonnen
+E5		int	Spiele unentschieden
+E7		int	Spiele verloren
+E9		int	Brettpunkte *2
+EB		int	1. Feinwertung *2
+ED		int	2. Feinwertung *2 [Sonneborn-Berger *4]
+110		bin	Sonderpunkte positiv (bool 00 positiv, FF negativ)
+111		int	Sonderpunkte *2 bzw. abzgl. von 00 

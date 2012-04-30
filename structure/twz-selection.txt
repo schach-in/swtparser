@@ -1,0 +1,11 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for determination of tournament rating
+# Definitionsdatei für TWZ-Ermittlung
+#
+# [bin] [value]
+00	ELO vor DWZ
+01	NWZ vor ELO
+02	ELO oder DWZ
