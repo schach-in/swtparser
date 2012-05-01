@@ -1,0 +1,12 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for determination of tournament modus
+# Definitionsdatei für Turniermodus
+#
+# [bin] [value]
+00	Schweizer System
+01	Rundenturnier
+02	KO-Turnier
+03	Scheveninger-System

@@ -34,22 +34,44 @@ F5	130	asc	Turnierueberschrift Zeile 1
 249		int	Runde(n?) mit erzwungenem Farbausgleich
 24A		int	Spieleranzahl für mittlere Wertung (0=alle)
 24C		boo	Kampflose Partien erneut setzen
-24D		bin	(CH) Paarungsermittlung nach (00 = FIDE, 01 = Rangliste, ??)
-251		boo	(CH) Siege als letzte Wertung
+24D		boo	Keizer-Punkte mit Bruchzahlen auf volle oder halbe Punkte runden [Keizer]
+24E		boo	Ranglisten mit Keizer-Punkten für Startrangposition ermitteln [Keizer]
+251		boo	Siege als letzte Wertung [CH]
+254		sel	Turniermodus
+255		int	Partien/Runde
+258		int	Durchgänge
 25C		int	Bretter
 25E		boo	Mannschaftsturnier
 261	262	inb	_FILEVERSION_
 263		sel	Feinwertung Mannschaft 1
-265		sel	Feinwertung Mannschaft 2
-267		sel	Feinwertung Mannschaft 3
-26D		sel	Feinwertung Einzelspieler 1
+265		sel	Feinwertung Mannschaft 2 [CH]
+267		sel	Feinwertung Mannschaft 3 [CH]
+269		sel	Feinwertung Mannschaft 2 [Scheveninger]
+26A		sel	Feinwertung Mannschaft 3 [Scheveninger]
+26B		sel	Feinwertung Mannschaft 2 [Amsterdamer]
+26C		sel	Feinwertung Mannschaft 3 [Amsterdamer]
+26D		sel	Feinwertung Einzelspieler 1 [CH]
 26F		boo	Mannschafts-Gewinnmodus (00 = Punkte A > B, FF = Mindestpunkte (4,5/8))
 272	273	inb	Pseudowertung für Spieler ohne NWZ/TWZ
 278		boo	Gleiche Rangnummer bei gleicher Feinwertung
 27C		int	Anzahl der Runden mit Test auf Verbandsgleichheit
+28B		bin	Mit vorangestelltem KO-Turnier (00 = nein, 03 = ja)
 28C		boo	KO-Turnier-Siege mit voller Punktzahl ins CH-System übernehmen
+290		sel	Feinwertung Mannschaft 3 [Keizer]
+291		boo	Zweite Wertung: Partiepunkte [Keizer]
+29D		sel	Paarungsermittlung [Amsterdamer]
+2AE		boo	Kampflose Punkte vergeben, wenn ungleiche Gruppengröße [Amsterdamer]
 2D2		boo	03 Mannschaftsliste sichtbar
 2D3		int	Position Fenster 2D2 vom oberen Rand in px
+309		bin	Unentschuldigte Spieler [Keizer] (00 = Keine Punkte, FF = Drittel Punkte)
+30A		bin	Entschuldigte Spieler [Keizer] (00 = Drittel Punkte, FF = Halbe Punkte)
+30B		bin	Hängepartien [Keizer] (00 = Halbe Punkte, FF = Drittel Punkte)
+30C		bin	Spielfreie Paarungen [Keizer] (00 = Drittel Punkte, FF = Halbe Punkte)
+310		bin	Ranglistenausgabe [KO] (00 = nach Setzliste, FF = nach Rangliste)
+311		sel	Teilnehmer-Setzliste Ermittlung [KO]
+312		boo	gesetzte Teilnehmer paarweise den Gruppenhälften zulosen [KO]
+313		boo	nicht gesetzte Teilnehmer den freien Startplätzen zulosen [KO]
+315		int	Anzahl der maximal zu setzenden Teilnehmer (0 = alle)
 316	33D	asc	Turniername
 33F	366	asc	Ort/Land
 368	3A3	asc	Schiedsrichter
@@ -68,3 +90,4 @@ F5	130	asc	Turnierueberschrift Zeile 1
 534		int	Mannschaftszahl
 538		sel	Einzelergebnis-Wertung
 53A		sel	Mannschaftsergebnis-Wertung
+2CB4		boo	Zweite Runde als Zwischenrunde für Zweierpotenz-Ermittlung [KO]
