@@ -19,4 +19,5 @@
 0A	Rating-Differenz (NWZ/TWZ)
 0C	Drei-Punkte-Wertung
 0D	Drei-Punkte-Farbwertung
+10	Berliner Wertung
 13	Schmuljan-Wertung

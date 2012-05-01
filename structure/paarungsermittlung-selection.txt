@@ -1,0 +1,12 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for determination of pairings in the Amsterdam System
+# Definitionsdatei für Paarungsermittlung im Amsterdamer System
+#
+# [bin] [value]
+00	?
+01	Standardtabelle
+02	Rutschsystem (1,2,3,4,5,6,...)
+03	Rutschsystem (1,x,2,y,3,z,4,...)
