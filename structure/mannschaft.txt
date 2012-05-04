@@ -33,6 +33,11 @@ E1		int	Spiele gesamt
 E3		int	Spiele gewonnen
 E5		int	Spiele unentschieden
 E7		int	Spiele verloren
+E9		int	Mannschaftspunkte *2 (? Doppel)
+EB		int	Brettpunkte *2 (? Doppel)
+ED EE	inb	Buchholz *2 (? Doppel)
+F1		int	Wertung 1 (? Doppel)
+F3		int	Wertung 2 (? Doppel)
 FB	FC	bin		
 FE		int
 100	101	bin
@@ -42,7 +47,7 @@ FE		int
 111		boo	Sonderpunkte positiv (bool 00 positiv, FF negativ)
 124		int	Mannschaftspunkte *2
 128		int	Brettpunkte *2
-12C		int	Buchholz *2
+12C	12D	inb	Buchholz *2
 134		int	Wertung 1 (?)
 138		int	Wertung 2 (?)
 15E	185	asc	Info 1
