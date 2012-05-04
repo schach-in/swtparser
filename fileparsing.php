@@ -150,12 +150,12 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			break;
 
 		case 'int':
-			// Content is integer value
+			// Content is integer value, little endian
 			$data['out'][$line['content']] = hexdec(bin2hex(($substring)));
 			break;
 
 		case 'inb':
-			// Content is integer value, backwards
+			// Content is integer value, big endian
 			$data['out'][$line['content']] = hexdec(bin2hex(strrev($substring)));
 			break;
 
