@@ -11,23 +11,6 @@
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
-/**
- * Read a file
- *
- * @param string $filename
- * @return string
- * @todo better error handling
- */
-function zzparse_open($filename) {
-	if (!$filename) {
-		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
-		return false;
-	}
-	$handle = fopen($filename, "rb");
-	$contents = fread($handle, filesize($filename));
-	fclose($handle);
-	return $contents;
-}
 
 /**
  * Reads a definition file for a part of the file structure

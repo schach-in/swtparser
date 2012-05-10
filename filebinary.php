@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Output of a binary file in hexadecimal and ASCII representation alongside
@@ -27,21 +27,26 @@ ini_set('max_execution_time', 960);
  * @return string HTML output
  */
 function filebinary($filename, $markings = array()) {
-	$content = zzparse_open($filename);
+	if (!$filename) {
+		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
+		return false;
+	}
+	$content = file_get_contents($filename);
 	if (!$content) return false;
-	
+
 	if ($markings) {
 		foreach ($markings as $data) {
 			$bin_markings[$data['begin']] = $data;
 		}
 		asort($bin_markings);
 	}
-	
+
 	$stop = -1;
 	$class = array();
 	$class['byte'] = '';
 	$class['char'] = '';
 	$title = '';
+	$areas = array('char', 'byte');
 
 	$len = strlen($content);
 	for ($pos = 0; $pos < $len; $pos++) {
@@ -53,15 +58,15 @@ function filebinary($filename, $markings = array()) {
 		$class_last['byte'] = $class['byte'] ? $class['byte'] : '';
 		$class_last['char'] = $class['char'] ? $class['char'] : '';
 		$title_last = $title ? $title : '';
-		
+
 		$class['byte'] = '';
 		$class['char'] = '';
 		$title = '';
-				
+
 		// don't try to show unprintable characters
 		if ($byte === '00') {
-			$class['byte'] = 'nullbyte'; 
-			$class['char'] = 'nullbyte'; 
+			$class['byte'] = 'nullbyte';
+			$class['char'] = 'nullbyte';
 			$char = '.';
 		} elseif (hexdec($byte) < 32) {
 			$char = '.';
@@ -82,7 +87,7 @@ function filebinary($filename, $markings = array()) {
 		if ($pos === $stop) {
 			$stop = -1;
 		}
-		
+
 		// output classes
 		if (floor(($pos - 1)/16) < $line) {
 			// beginning of line
@@ -91,18 +96,19 @@ function filebinary($filename, $markings = array()) {
 				.($title ? '" title="'.$title : '').'">'.$byte;
 		} else {
 			// middle or end of line
-			$areas = array('char', 'byte');
 			foreach ($areas as $area) {
 				if ($class[$area]) {
 					if (!$class_last[$area]) {
 						// there's no previous class
 						$$area = '<em class="'.$class[$area]
-							.(($area == 'byte' AND $title) ? '" title="'.$title : '').'">'.$$area;
+							.(($area == 'byte' AND $title) ? '" title="'.$title : '')
+							.'">'.$$area;
 					} elseif ($class_last[$area] !== $class[$area]
 						OR ($area === 'byte' AND $title_last != $title)) {
 						// previous class is different
 						$$area = '</em><em class="'.$class[$area]
-							.(($area == 'byte' AND $title) ? '" title="'.$title : '').'">'.$$area;
+							.(($area == 'byte' AND $title) ? '" title="'.$title : '')
+							.'">'.$$area;
 					}
 				} elseif ($class_last[$area]) {
 					$$area = '</em>'.$$area;

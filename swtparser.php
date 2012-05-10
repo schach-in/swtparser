@@ -46,7 +46,11 @@ require_once 'fileparsing.php';
  *		array 'bin' data for marking up binary output
  */
 function swtparser($filename) {
-	$contents = zzparse_open($filename);
+	if (!$filename) {
+		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
+		return false;
+	}
+	$contents = file_get_contents($filename);
 	if (!$contents) return false;
 	
 	// read common tournament data
