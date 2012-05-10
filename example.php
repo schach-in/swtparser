@@ -39,7 +39,7 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 .data thead th
 			{ font-size: 80%; border-bottom: 1px solid #999;
 			vertical-align: bottom; }
-.data td	{ padding: .2em .75em .2em .2em; vertical-align: top; 
+.data td	{ padding: .2em .75em .2em .2em; vertical-align: top;
 			white-space: nowrap; }
 .data th	{ padding: .2em; }
 .data tr.uneven td
@@ -51,7 +51,7 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 
 <h1>Example for SWT Parser / Beispiel für SWT-Parser</h1>
 
-<?php 
+<?php
 
 $dir = 'data';
 $files = swtparser_files($dir);
@@ -92,7 +92,7 @@ In dem Verzeichnis <code><?php echo $dir; ?></code> gibt es keine SWT-Dateien zu
 
 ?>
 
-<p>Current file is: <?php echo htmlspecialchars($filename); ?> / 
+<p>Current file is: <?php echo htmlspecialchars($filename); ?> /
 Die aktuelle Datei ist: <?php echo htmlspecialchars($filename); ?></p>
 <p><a href="example.php">Choose a different file / Eine andere Datei auswählen</a></p>
 
@@ -135,7 +135,7 @@ if (!empty($_GET['view'])) {
 <?php
 
 		echo swtparser_out_tabular($tournament['out']);
-		
+
 		if ($tournament['out']['Mannschaftsturnier']) {
 			echo '<h2 id="teams">Teams</h2>';
 			echo swtparser_out_info($tournament['out']['Teams']);
@@ -166,7 +166,7 @@ function swtparser_files($dir) {
 	$handle = opendir($dir);
 	while ($file = readdir($handle)) {
 		if (substr($file, 0, 1) === '.') continue;
-		if (strtoupper(substr($file, -4)) !== '.SWT') continue; 
+		if (strtoupper(substr($file, -4)) !== '.SWT') continue;
 		$files[] = $file;
 	}
 	return $files;
@@ -190,7 +190,7 @@ function swtparser_out_tabular($tournament) {
 			$output .= $tournament[$key];
 		} else {
 			$output .= '(see below / siehe unten)';
-		}	
+		}
 		$output .= '</td></tr>'."\n";
 	}
 	$output .= '</table>';
