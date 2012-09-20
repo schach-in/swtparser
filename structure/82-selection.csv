@@ -1,0 +1,11 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for valuation of team results
+# Definitionsdatei für Wertung von Mannschaftsergebnissen
+#
+# [bin]	[value]
+00	0
+01	1
+02	2

@@ -1,0 +1,17 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for results
+# Defintionsdatei für Ergebnisse
+#
+# [start]	[end]	[type]	[content]
+0	1	bin	3000
+8		sel	3001
+9		bin	3002
+A		bin	3003
+B		sel	3004
+D		int	3005
+F		sel	3006
+11		bin	3007
+12		int	3008

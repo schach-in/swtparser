@@ -1,0 +1,11 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+#
+# Definition file for colour values
+# Defintionsdatei für Farben
+#
+# [bin]	[value]
+00	0
+01	1
+03	2

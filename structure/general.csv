@@ -1,0 +1,93 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for common tournament data
+# Definitionsdatei für allgemeine Turnierdaten
+#
+#[start]	[end]	[type]	[field]
+1		int	1
+3		int	2
+5		int	3
+7		int	4
+9		int	5
+B		int	6
+AF		int	7
+B0		boo	8
+B2		int	9
+B4		boo	10
+B8	CA+	asc	11
+F5	130	asc	12
+131		int	13
+133		boo	14
+135		int	15
+137		boo	16
+13B	149+	asc	17
+178	1B4	asc	18
+238		int	19
+23A		int	20
+23C		sel:84	21
+23E		boo	22
+243		boo	23
+246		sel	24
+249		int	25
+24A		int	26
+24C		boo	27
+24D		boo	28
+24E		boo	29
+251		boo	30
+254		sel	31
+255		int	32
+258		int	33
+25C		int	34
+25E		boo	35
+261	262	inb	9999
+263		sel:84	36
+265		sel:84	37
+267		sel:84	38
+269		sel:84	39
+26A		sel:84	40
+26B		sel:84	41
+26C		sel:84	42
+26D		sel:84	43
+26F		boo	44
+272	273	inb	45
+278		boo	46
+27C		int	47
+28B		bin	48
+28C		boo	49
+290		sel:84	50
+291		boo	51
+29D		sel	52
+2AE		boo	53
+2D2		boo	54
+2D3		int	55
+309		bin	56
+30A		bin	57
+30B		bin	58
+30C		bin	59
+310		bin	60
+311		sel	61
+312		boo	62
+313		boo	63
+315		int	64
+316	33D	asc	65
+33F	366	asc	66
+368	3A3	asc	67
+3A5	3E0	asc	68
+3E2	41D	asc	69
+41F	432	asc	70
+434	447	asc	71
+449	45C	asc	72
+45E	471	asc	73
+473	487	asc	74
+52C		int	75
+52E		int	76
+52F		int	77
+530		boo	78
+531		boo	79
+534		int	80
+538		sel	81
+53A		sel	82
+2CB4		boo	83

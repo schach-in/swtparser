@@ -55,12 +55,12 @@ function swtparser($filename) {
 	
 	// read common tournament data
 	// Allgemeine Turnierdaten auslesen
-	$tournament = zzparse_interpret($contents, 'allgemein');
+	$tournament = zzparse_interpret($contents, 'general');
 
 	// common data lengths
 	// Allgemeine Datenlängen
 	define('LEN_PAARUNG', 19);
-	if (FILEVERSION >= 800) {
+	if ($tournament['out'][9999] >= 800) {
 		// Mannschaftsturnier mit zusätzlichen Mannschaftsdaten
 		define('START_PARSING', 13384); // = 0x3448
 		define('LEN_KARTEI', 655);		// = 0x28F
@@ -72,7 +72,7 @@ function swtparser($filename) {
 
 	// index card for teams
 	//	Karteikarten Mannschaften
-	if ($tournament['out']['Mannschaftsturnier']) {
+	if ($tournament['out'][35]) {
 		list($tournament['out']['Teams'], $bin) = swtparser_records($contents, $tournament['out'], 'Teams');
 		$tournament['bin'] = array_merge($tournament['bin'], $bin);
 	}
@@ -84,7 +84,7 @@ function swtparser($filename) {
 
 	// team fixtures
 	//	Mannschaftspaarungen
-	if ($tournament['out']['Mannschaftsturnier']) {
+	if ($tournament['out'][35]) {
 		list($tournament['out']['Mannschaftspaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Teams');
 		$tournament['bin'] = array_merge($tournament['bin'], $bin);
 	}
@@ -106,18 +106,18 @@ function swtparser($filename) {
  */
 function swtparser_records($contents, $tournament, $type = 'Spieler') {
 	$startval = (START_PARSING 
-		+ ($tournament['Teilnehmerzahl'] * $tournament['maximale Runden'] * LEN_PAARUNG)
-		+ ($tournament['Mannschaftszahl'] * $tournament['maximale Runden'] * LEN_PAARUNG));
+		+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
+		+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
 	
 	switch ($type) {
 	case 'Spieler':
-		$maxval = $tournament['Teilnehmerzahl'];
-		$structfile = 'spieler';
+		$maxval = $tournament[4];
+		$structfile = 'player';
 		break;
 	case 'Teams':
-		$startval = ($startval + $tournament['Teilnehmerzahl'] * LEN_KARTEI);
-		$maxval = $tournament['Mannschaftszahl'];
-		$structfile = 'mannschaft';
+		$startval = ($startval + $tournament[4] * LEN_KARTEI);
+		$maxval = $tournament[80];
+		$structfile = 'team';
 		break;
 	}
 
@@ -127,9 +127,9 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
 		$data = zzparse_interpret($contents, $structfile, $startval + $i * LEN_KARTEI, LEN_KARTEI);
 		$bin = array_merge($bin, $data['bin']);
 		if ($type === 'Teams') {
-			$records[$data['out']['MNr.-ID']] = $data['out'];
+			$records[$data['out'][1018]] = $data['out'];
 		} else {
-			$records[$data['out']['TNr.-ID']] = $data['out'];
+			$records[$data['out'][2020]] = $data['out'];
 		}
 	}
 	return array($records, $bin);
@@ -152,15 +152,15 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 	
 	switch ($type) {
 	case 'Spieler':
-		$max_i = $tournament['maximale Runden'] * $tournament['Teilnehmerzahl'];
-		$structfile = 'einzelpaarungen';
-		$name_field = 'Spielername';
+		$max_i = $tournament[1] * $tournament[4];
+		$structfile = 'individual-pairings';
+		$name_field = 2000;
 		break;
 	case 'Teams':
-		$startval += $tournament['maximale Runden'] * $tournament['Teilnehmerzahl'] * LEN_PAARUNG;
-		$max_i = $tournament['maximale Runden'] * $tournament['Mannschaftszahl'];
-		$structfile = 'mannschaftspaarungen';
-		$name_field = 'Mannschaft';
+		$startval += $tournament[1] * $tournament[4] * LEN_PAARUNG;
+		$max_i = $tournament[1] * $tournament[80];
+		$structfile = 'team-pairings';
+		$name_field = 1000;
 		break;
 	}
 	
@@ -173,17 +173,17 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 		$pos = $startval + $i * LEN_PAARUNG;
 		$data = zzparse_interpret($contents, $structfile, $pos, LEN_PAARUNG);
 		$bin = array_merge($bin, $data['bin']);
-		if (isset($tournament[$type][$data['out']['Gegner']])) {
-			$data['out']['Gegner_lang'] = $tournament[$type][$data['out']['Gegner']][$name_field];
-		} elseif ($data['out']['Gegner'] !== '00') {
-			$data['out']['Gegner_lang'] = 'UNKNOWN '.$data['out']['Gegner'];
+		if (isset($tournament[$type][$data['out'][3002]])) {
+			$data['out']['Gegner_lang'] = $tournament[$type][$data['out'][3002]][$name_field];
+		} elseif ($data['out'][3002] !== '00') {
+			$data['out']['Gegner_lang'] = 'UNKNOWN '.$data['out'][3002];
 		} else {
 			$data['out']['Gegner_lang'] = '';
 		}
 		$fixtures[$id][$runde] = $data['out'];
 		// increment round, when reaching maximum rounds, start over again
 		// Runde einen erhoehen, nach max. Rundenzahl wieder von vorne beginnen
-		if ($runde == $tournament['maximale Runden']) $runde = 1; 
+		if ($runde == $tournament[1]) $runde = 1; 
 		else $runde++;
 	}
 	return array($fixtures, $bin);

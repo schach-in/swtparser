@@ -1,0 +1,23 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2012
+#
+# Definition file for ranking systems
+# Defintionsdatei für Feinwertungen
+#
+# [bin]	[value]
+00	0
+01	1
+02	2
+03	3
+04	4
+05	5
+06	6
+07	7
+08	8
+09	9
+0A	10
+0C	11
+0D	12
+10	13
+13	14
