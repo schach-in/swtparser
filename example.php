@@ -283,7 +283,7 @@ function swtparser_out_info($data, $field_names) {
 			$output .= '<tr class="'.($i & 1 ? 'un' : '').'even">';
 			$output .= '<th>'.$round.'</th>';
 			foreach (array_keys($data) as $key)
-				$output .= '<td>'.(preg_match('/^\d+\-\d+$/', $data[$key]) && $field_names[$data[$key]] ? $field_names[$data[$key]] : $data[$key]).'</td>';
+				$output .= '<td>'.(preg_match('/^\d+\-\d+$/', $data[$key]) && isset($field_names[$data[$key]]) ? $field_names[$data[$key]] : $data[$key]).'</td>';
 			$output .= '</tr>';
 		}
 		$output .= '<tr><td>&nbsp;</td><td></td></tr>';
