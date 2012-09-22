@@ -5,7 +5,7 @@
 # Definition file for valuation of team results
 # Definitionsdatei für Wertung von Mannschaftsergebnissen
 #
-# [bin] [value]
-00	Sieg=2, Remis=1
-01	Sieg=3, Remis=1
-02	Eigene Wertung
+# [bin]	[value]
+00	0
+01	1
+02	2

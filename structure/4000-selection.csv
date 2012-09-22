@@ -5,7 +5,7 @@
 # Definition file for colour values
 # Defintionsdatei für Farben
 #
-# [bin] [value]
-00	
-01	Weiss
-03	Schwarz
+# [bin]	[value]
+00	0
+01	1
+03	2

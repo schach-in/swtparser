@@ -5,11 +5,11 @@
 # Definition file for games' results
 # Defintionsdatei für Einzelergebnisse
 #
-# [start] [end] [type] [content]
-8		sel	Farbe
-9		bin	Gegner
-B		sel	Einzelergebnis
-B		sel	Mannschaftsergebnis
-D		int	Tisch
-F		sel	Status
-12		int	Brett
+# [start]	[end]	[type]	[content]
+8		sel	4000
+9		bin	4001
+B		sel	4002
+B		sel:3004	4003
+D		int	4004
+F		sel:3006	4005
+12		int	4006

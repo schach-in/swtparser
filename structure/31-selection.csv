@@ -5,8 +5,8 @@
 # Definition file for determination of tournament modus
 # Definitionsdatei für Turniermodus
 #
-# [bin] [value]
-00	Schweizer System
-01	Rundenturnier
-02	KO-Turnier
-03	Scheveninger-System
+# [bin]	[value]
+00	0
+01	1
+02	2
+03	3

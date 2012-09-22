@@ -5,7 +5,7 @@
 # Definition file for place values
 # Definitionsdatei für Spielorte
 #
-# [bin] [value]
-00	
-01	Heim
-03	Auswaerts
+# [bin]	[value]
+00	0
+01	1
+03	2

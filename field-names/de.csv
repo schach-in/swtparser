@@ -1,0 +1,272 @@
+[field]	[name]
+9999	_FILEVERSION_
+1	maximale Runden
+2	aktuelle Runde
+3	ausgeloste Runden
+4	Teilnehmerzahl
+5	Anzahl der Streichwertungen (Buchh., Feinw.)
+6	Anzahl der Runden mit Test auf Vereinsgleichheit
+7	Turnierueberschrift Zeile 1 Positionskorrektur
+8	Turnierueberschrift Zeile 1 zentrieren
+9	Turnierueberschrift Zeile 1 Schriftgrad
+10	Turnierueberschrift Zeile 1 Schriftschnitt fett
+11	Turnierueberschrift Zeile 1 Schriftart
+12	Turnierueberschrift Zeile 1
+13	Turnierueberschrift Zeile 2 Positionskorrektur
+14	Turnierueberschrift Zeile 2 zentrieren
+15	Turnierueberschrift Zeile 2 Schriftgrad
+16	Turnierueberschrift Zeile 2 Schriftschnitt fett
+17	Turnierueberschrift Zeile 2 Schriftart
+18	Turnierueberschrift Zeile 2
+19	Maximale Farbdifferenz
+20	Maximale Farbgleichheit
+21	Feinwertung Einzelspieler 2
+22	Kampflose Punkte in Partiezählung (SRV) werten
+23	Rangliste mit deaktivierten Mannschaften
+24	TWZ Ermittlung
+24-0	ELO vor DWZ
+24-1	NWZ vor ELO
+24-2	ELO oder DWZ
+25	Runde mit erzwungenem Farbausgleich
+26	Spieleranzahl für mittlere Wertung (0=alle)
+27	Kampflose Partien erneut setzen
+28	Keizer-Punkte mit Bruchzahlen auf volle oder halbe Punkte runden [Keizer]
+29	Ranglisten mit Keizer-Punkten für Startrangposition ermitteln [Keizer]
+30	Siege als letzte Wertung [CH]
+31	Turniermodus
+31-0	Schweizer System
+31-1	Rundenturnier
+31-2	KO-Turnier
+31-3	Scheveninger-System
+32	Partien/Runde
+33	Durchgänge
+34	Bretter
+35	Mannschaftsturnier
+36	Feinwertung Mannschaft 1
+37	Feinwertung Mannschaft 2 [CH]
+38	Feinwertung Mannschaft 3 [CH]
+39	Feinwertung Mannschaft 2 [Scheveninger]
+40	Feinwertung Mannschaft 3 [Scheveninger]
+41	Feinwertung Mannschaft 2 [Amsterdamer]
+42	Feinwertung Mannschaft 3 [Amsterdamer]
+43	Feinwertung Einzelspieler 1 [CH]
+44	Mannschafts-Gewinnmodus (00 = Punkte A > B, FF = Mindestpunkte (4,5/8))
+45	Pseudowertung für Spieler ohne NWZ/TWZ
+46	Gleiche Rangnummer bei gleicher Feinwertung
+47	Anzahl der Runden mit Test auf Verbandsgleichheit
+48	Mit vorangestelltem KO-Turnier (00 = nein, 03 = ja)
+49	KO-Turnier-Siege mit voller Punktzahl ins CH-System übernehmen
+50	Feinwertung Mannschaft 3 [Keizer]
+51	Zweite Wertung: Partiepunkte [Keizer]
+52	Paarungsermittlung
+52-0	?
+52-1	Standardtabelle
+52-2	Rutschsystem (1,2,3,4,5,6,...)
+52-3	Rutschsystem (1,x,2,y,3,z,4,...)
+53	Kampflose Punkte vergeben, wenn ungleiche Gruppengröße [Amsterdamer]
+54	03 Mannschaftsliste sichtbar
+55	Position Fenster 2D2 vom oberen Rand in px
+56	Unentschuldigte Spieler [Keizer] (00 = Keine Punkte, FF = Drittel Punkte)
+57	Entschuldigte Spieler [Keizer] (00 = Drittel Punkte, FF = Halbe Punkte)
+58	Hängepartien [Keizer] (00 = Halbe Punkte, FF = Drittel Punkte)
+59	Spielfreie Paarungen [Keizer] (00 = Drittel Punkte, FF = Halbe Punkte)
+60	Ranglistenausgabe [KO] (00 = nach Setzliste, FF = nach Rangliste)
+61	Teilnehmer-Setzliste Ermittlung [KO]
+61-0	nach Teilnehmerliste
+61-1	alle Teilnehmer
+61-2	erste Hälfte der Teilnehmer
+61-3	erstes Viertel der Teilnehmer
+61-4	erstes Achtel der Teilnehmer
+62	gesetzte Teilnehmer paarweise den Gruppenhälften zulosen [KO]
+63	nicht gesetzte Teilnehmer den freien Startplätzen zulosen [KO]
+64	Anzahl der maximal zu setzenden Teilnehmer (0 = alle)
+65	Turniername
+66	Ort/Land
+67	Schiedsrichter
+68	Weitere Schiedsrichter
+69	Bemerkung
+70	Datum Start
+71	Datum Ende
+72	1. Periode Züge/Std.
+73	2. Periode Züge/Std.
+74	3. Periode Züge/Std.
+75	Maximal speicherbare Mannschaften (MaxMann)
+76	?- Spieler/Mannschaft *2
+77	Spieler/Mannschaft
+78	Farbe des 1. Spl. in Runde 1 (00, 01 = Weiß, FF = Schwarz)
+79	Farbe Brt. 1 der Heim-Mannsch. (00 = Schwarz, FF = Weiß)
+80	Mannschaftszahl
+81	Einzelergebnis-Wertung
+81-0	Sieg=1, Remis=0.5
+81-1	Sieg=3, Remis=1
+81-2	Eigene Wertung
+82	Mannschaftsergebnis-Wertung
+82-0	Sieg=2, Remis=1
+82-1	Sieg=3, Remis=1
+82-2	Eigene Wertung
+83	Zweite Runde als Zwischenrunde für Zweierpotenz-Ermittlung [KO]
+84	Feinwertung
+84-0	Nicht gesetzt
+84-1	Mannschaftspunkte
+84-2	Brettpunkte
+84-3	Buchholzwertung
+84-4	Summenwertung
+84-5	Sonneborn-Berger
+84-6	Mittlere Buchholz
+84-7	Buchholzsumme
+84-8	Gegner-NWZ/Elo-Mittel
+84-9	Rating-Leistung (NWZ/TWZ)
+84-10	Rating-Differenz (NWZ/TWZ)
+84-11	Drei-Punkte-Wertung
+84-12	Drei-Punkte-Farbwertung
+84-13	Berliner Wertung
+84-14	Schmuljan-Wertung
+	
+1000	Mannschaftsname
+1001	FIDE-Elo-Schnitt
+1002	DWZ-Schnitt
+1003	DWZ-Schnitt (?)
+1004	TlnKenn.
+1005	Land
+1006	Verband
+1007	Datum
+1008	ZPS Vereins-Nr.
+1009	Attribut
+1010	Selekt
+1011	Wahl1, Wahl2, Wahl3
+1012	MNr. Rangliste (??)
+1013	erstes Brett
+1014	erstes Brett (?)
+1015	Beginn Spieler: TNr.-ID - 1
+1016	Spielerzahl
+1017	MNr. Rangliste (?)
+1018	MNr.-ID
+1019	MNr.
+1020	Platz (aktuelle Runde ?)
+1021	Platz (letzte Runde ?)
+1022	Spiele gesamt
+1023	Spiele gewonnen
+1024	Spiele unentschieden
+1025	Spiele verloren
+1026	Mannschaftspunkte *2 (? Doppel)
+1027	Brettpunkte *2 (? Doppel)
+1028	Buchholz *2 (? Doppel)
+1029	Wertung 1 (? Doppel)
+1030	Wertung 2 (? Doppel)
+1031	?
+1032	?
+1033	?
+1034	?
+1035	?
+1036	Sonderpunkte *2 bzw. abzgl. von 00 
+1037	Sonderpunkte positiv (bool 00 positiv, FF negativ)
+1038	Mannschaftspunkte *2
+1039	Brettpunkte *2
+1040	Buchholz *2
+1041	Wertung 1 (?)
+1042	Wertung 2 (?)
+1043	Info 1
+1044	Info 2
+1045	Info 3
+1046	Info 4
+	
+2000	Spielername
+2001	Mannschaft
+2002	FIDE-Titel
+2003	FIDE-Elo
+2004	NWZ
+2005	TlnKenn.
+2006	Land
+2007	Verband
+2008	Geburtsdatum
+2009	ZPS Mgl. Status
+2010	ZPS Vereins-Nr.
+2011	ZPS Mitglieds-Nr.
+2012	Spiele ausgesetzt
+2013	Attribut (*=inaktiv)
+2014	Selekt
+2015	Wahl1, Wahl2, Wahl3
+2016	MNr.
+2017	Brett
+2018	Brett (?)
+2019	TNr. (?)
+2020	TNr.-ID
+2021	TNr.
+2022	Platz
+2023	Platz Brettwertung
+2024	Spiele gesamt
+2025	Spiele gewonnen
+2026	Spiele unentschieden
+2027	Spiele verloren
+2028	Sonderpunkte positiv (bool 00 positiv, FF negativ)
+2029	Sonderpunkte *2 bzw. abzgl. von 00
+2030	Brettpunkte *2
+2031	1. Feinwertung *2
+2032	2. Feinwertung *2 [Sonneborn-Berger *4]
+2033	FIDE-ID
+2034	PKZ
+2035	Info 1
+2036	Info 2
+2037	Info 3
+2038	Info 4
+2039	letzte fünf Stellen von PKZ
+	
+3000	?
+3001	Ort
+3001-0	?
+3001-1	Heim
+3001-2	Auswaerts
+3002	Gegner
+3003	?
+3004	Mannschaftsergebnis
+3004-0	?
+3004-1	?
+3004-2	?
+3004-3	?
+3004-4	0
+3004-5	0
+3004-6	0
+3004-7	0
+3004-8	.5
+3004-9	.5
+3004-10	.5
+3004-11	.5
+3004-12	1
+3004-13	1
+3004-14	1
+3004-15	1
+3005	Tisch
+3006	Status
+3006-0	?
+3006-1	kampflos
+3006-2	nicht gespielt
+3006-3	nicht eingesetzt (?)
+3007	?
+3008	Brett
+	
+4000	Farbe
+4000-0	?
+4000-1	Weiss
+4000-2	Schwarz
+4001	Gegner
+4002	Einzelergebnis
+4002-0	?
+4002-1	0
+4002-2	.5
+4002-3	1
+4002-4	?
+4002-5	0
+4002-6	.5
+4002-7	1
+4002-8	?
+4002-9	0
+4002-10	.5
+4002-11	1
+4002-12	?
+4002-13	0
+4002-14	.5
+4002-15	1
+4003	Mannschaftsergebnis
+4004	Tisch
+4005	Status
+4006	Brett

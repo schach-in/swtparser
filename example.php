@@ -134,16 +134,23 @@ if (!empty($_GET['view'])) {
 
 <?php
 
-		echo swtparser_out_tabular($tournament['out']);
+		$language = 'de';
+		$field_names = swtparser_get_field_names($language);
 
-		if ($tournament['out']['Mannschaftsturnier']) {
+		if (count($field_names) == 0) {
+			echo 'Language <em>'.$language.'</em> currently not supported.<br><br>';
+		}
+
+		echo swtparser_out_tabular($tournament['out'], $field_names);
+
+		if ($tournament['out'][35]) {
 			echo '<h2 id="teams">Teams</h2>';
-			echo swtparser_out_info($tournament['out']['Teams']);
-			echo swtparser_out_fixtures($tournament['out']['Mannschaftspaarungen'], 'Mannschaftspaarungen', 'mm-paarungen');
+			echo swtparser_out_info($tournament['out']['Teams'], $field_names);
+			echo swtparser_out_fixtures($tournament['out']['Mannschaftspaarungen'], 'Mannschaftspaarungen', 'mm-paarungen', $field_names);
 		}
 		echo '<h2 id="spieler">Players / Spieler</h2>';
-		echo swtparser_out_info($tournament['out']['Spieler']);
-		echo swtparser_out_fixtures($tournament['out']['Einzelpaarungen'], 'Einzelpaarungen', 'ez-paarungen');
+		echo swtparser_out_info($tournament['out']['Spieler'], $field_names);
+		echo swtparser_out_fixtures($tournament['out']['Einzelpaarungen'], 'Einzelpaarungen', 'ez-paarungen', $field_names);
 
 		break;
 	}
@@ -173,21 +180,41 @@ function swtparser_files($dir) {
 }
 
 /**
+ * Gets a list of field names by a given language
+ * Erzeugt eine Liste von Feldbezeichnern zu einer gegebenen Sprache
+ *
+ * @param array $language (two-letter language code)
+ * @return array field names
+ */
+function swtparser_get_field_names($language) {
+	$field_names = array();
+	$rows = file('field-names/'.$language.'.csv');
+	for ($i = 0; $i < count($rows); $i++) {
+		$row = str_getcsv($rows[$i], "\t");
+		if (preg_match('/^\d/', $row[0])) {
+			$field_names[$row[0]] = $row[1];
+		}
+	}
+	return $field_names;
+}
+
+/**
  * Shows a list of keys and their values
  * Zeigt eine Liste von Schlüsseln und ihren Werten
  *
  * @param array $tournament (returned array from swtparser())
+ * @param array $field_names (returned array from swtparser_get_field_names())
  * @return string HTML output
  * @see swtparser()
  */
-function swtparser_out_tabular($tournament) {
+function swtparser_out_tabular($tournament, $field_names) {
 	$output = '<table class="data">';
 	$i = 0;
 	foreach (array_keys($tournament) as $key) {
 		$i++;
-		$output .= '<tr class="'.($i & 1 ? 'un' : '').'even"><th>'.$key.'</th><td>';
+		$output .= '<tr class="'.($i & 1 ? 'un' : '').'even"><th>'.($field_names[$key] ? $field_names[$key] : $key).'</th><td>';
 		if (!is_array($tournament[$key])) {
-			$output .= $tournament[$key];
+			$output .= (preg_match('/^\d+\-\d+$/', $tournament[$key]) && $field_names[$tournament[$key]] ? $field_names[$tournament[$key]] : $tournament[$key]);
 		} else {
 			$output .= '(see below / siehe unten)';
 		}
@@ -202,15 +229,16 @@ function swtparser_out_tabular($tournament) {
  * Zeigt allgemeine Informationen über Spieler und Teams
  *
  * @param array $data (part of returned array from swtparser())
+ * @param array $field_names (returned array from swtparser_get_field_names())
  * @return string HTML output
  * @see swtparser()
  */
-function swtparser_out_info($data) {
+function swtparser_out_info($data, $field_names) {
 	if (!$data) return '<p>No data available. / Keine Daten vorhanden.</p>';
 	$output = '<table class="data"><thead><th>ID</th>';
 	$head = reset($data);
 	foreach (array_keys($head) as $th) {
-		$output .= '<th><span>'.$th.'</span></th>';
+		$output .= '<th><span>'.($field_names[$th] ? $field_names[$th] : $th).'</span></th>';
 	}
 	$output .= '</thead><tbody>';
 	$i = 0;
@@ -233,16 +261,17 @@ function swtparser_out_info($data) {
  * @param array $fixtures (part of returned array from swtparser())
  * @param string $title (optional, HTML heading)
  * @param string $id (optional, HTML heading id attribute)
+ * @param array $field_names (returned array from swtparser_get_field_names())
  * @return string HTML output
  */
- function swtparser_out_fixtures($fixtures, $title = 'Paarungen', $id = 'paarungen') {
+ function swtparser_out_fixtures($fixtures, $title = 'Paarungen', $id = 'paarungen', $field_names = array()) {
 	if (!$fixtures) return '<p>No data available. / Keine Daten vorhanden.</p>';
 	$output = '<h2 id="'.$id.'">'.$title.'</h2>';
 	$output .= '<table class="data"><thead><th>Round / Runde</th>';
 	$head = reset($fixtures);
 	$head = reset($head);
 	foreach (array_keys($head) as $th) {
-		$output .= '<th>'.$th.'</th>';
+		$output .= '<th>'.($field_names[$th] ? $field_names[$th] : $th).'</th>';
 	}
 	$output .= '</thead>';
 	foreach ($fixtures AS $player => $rounds) {
@@ -254,7 +283,7 @@ function swtparser_out_info($data) {
 			$output .= '<tr class="'.($i & 1 ? 'un' : '').'even">';
 			$output .= '<th>'.$round.'</th>';
 			foreach (array_keys($data) as $key)
-				$output .= '<td>'.$data[$key].'</td>';
+				$output .= '<td>'.(preg_match('/^\d+\-\d+$/', $data[$key]) && isset($field_names[$data[$key]]) ? $field_names[$data[$key]] : $data[$key]).'</td>';
 			$output .= '</tr>';
 		}
 		$output .= '<tr><td>&nbsp;</td><td></td></tr>';

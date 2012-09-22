@@ -42,7 +42,7 @@ function zzparse_structure($part, $type = 'fields') {
 	}
 	$dirs[] = '';
 	foreach ($dirs as $dir) {
-		$filename = 'structure'.$dir.'/'.$part.'.txt';
+		$filename = 'structure'.$dir.'/'.$part.'.csv';
 		if (!file_exists($filename)) $filename = '';
 		else break;
 	}
@@ -74,7 +74,7 @@ function zzparse_structure($part, $type = 'fields') {
 			break;
 		case 'replacements':
 			list($my['key'], $my['replacement']) = $line;
-			$structure[$part][$my['key']] = $my['replacement'];
+			$structure[$part][$my['key']] = str_replace('selection', '', $part).$my['replacement'];
 			break;
 		}
 	}
@@ -114,7 +114,7 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			'type' => $line['type'],
 			'content' => $line['content']
 		);
-		switch ($line['type']) {
+		switch (substr($line['type'], 0, 3)) {
 		case 'asc':
 			// Content is in ASCII format
 			// cuts starting byte with value 00 which marks the end of string, 
@@ -154,7 +154,7 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 		
 		case 'sel':
 			$area = strtolower($line['content']);
-			if ($pos = strpos($area, ' ')) $area = substr($area, 0, $pos);
+			if (preg_match('/^sel\:\d+/', $line['type'])) $area = str_replace('sel:', '', $line['type']);
 			$area .= '-selection';
 			$selection = zzparse_structure($area, 'replacements');
 			$value = zzparse_binary($substring);
@@ -163,11 +163,6 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			} else {
 				$data['out'][$line['content']] = $selection[$value];
 			}
-		}
-
-		// all uppercase variables: define as constants as well
-		if ($const) {
-			define($line['content'], $data['out'][$line['content']]);		
 		}
 	}
 	return $data;
