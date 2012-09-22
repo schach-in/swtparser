@@ -64,7 +64,7 @@ function swtparser($filename) {
 	define('LEN_PAARUNG', $structure['length:pairing']);
 	if ($tournament['out'][9999] >= 800) {
 		// Mannschaftsturnier mit zusätzlichen Mannschaftsdaten
-		define('START_PARSING', $structure['start:fixtures_teams']); // = 0x3448
+		define('START_PARSING', $structure['start:fixtures_players']); // = 0x3448
 		define('LEN_SPIELER_KARTEI', $structure['length:player']);		// = 0x28F
 		define('LEN_MANNSCHAFT_KARTEI', $structure['length:team']);		// = 0x28F
 	} else {
