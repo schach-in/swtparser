@@ -212,4 +212,23 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 	return array($fixtures, $bin);
 }
 
+/**
+ * Gets a list of field names by a given language
+ * Erzeugt eine Liste von Feldbezeichnern zu einer gegebenen Sprache
+ *
+ * @param array $language (two-letter language code)
+ * @return array field names
+ */
+function swtparser_get_field_names($language) {
+	$field_names = array();
+	$rows = file(__DIR__.'/field-names/'.$language.'.csv');
+	for ($i = 0; $i < count($rows); $i++) {
+		$row = str_getcsv($rows[$i], "\t");
+		if (preg_match('/^\d/', $row[0])) {
+			$field_names[$row[0]] = $row[1];
+		}
+	}
+	return $field_names;
+}
+
 ?>
