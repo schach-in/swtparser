@@ -42,7 +42,7 @@ function zzparse_structure($part, $type = 'fields') {
 	}
 	$dirs[] = '';
 	foreach ($dirs as $dir) {
-		$filename = 'structure'.$dir.'/'.$part.'.csv';
+		$filename = __DIR__.'/structure'.$dir.'/'.$part.'.csv';
 		if (!file_exists($filename)) $filename = '';
 		else break;
 	}

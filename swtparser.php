@@ -6,8 +6,10 @@
  * Part of »Zugzwang Project«
  * http://www.zugzwang.org/projects/swtparser
  *
+ * @author Falco Nogatz, fnogatz@gmail.com
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon, jacob@koenige.org
+ * @copyright Copyright © 2012 Falco Nogatz
  * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
@@ -107,7 +109,7 @@ function swtparser($filename) {
  */
 function swtparser_get_structure() {
 	$array = array();
-	$rows = file('structure/structure.csv');
+	$rows = file(__DIR__.'/structure/structure.csv');
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
 		if (preg_match('/^\w/', $row[0])) $array[$row[0]] = $row[1];
