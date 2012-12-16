@@ -5,8 +5,8 @@
 # Definition file for single games' status
 # Defintionsdatei für Status von Partien
 #
-# [bin] [value]
-00
-02	kampflos
-03	nicht gespielt
-33	nicht eingesetzt (?)
+# [bin]	[value]
+00	0
+02	1
+03	2
+33	3

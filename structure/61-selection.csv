@@ -5,9 +5,9 @@
 # Definition file for determination of participants' seeding in KO tournaments
 # Definitionsdatei für Ermittlung der Teilnehmer-Setzliste in KO-Turnieren
 #
-# [bin] [value]
-00	nach Teilnehmerliste
-01	alle Teilnehmer
-02	erste Hälfte der Teilnehmer
-03	erstes Viertel der Teilnehmer
-04	erstes Achtel der Teilnehmer
+# [bin]	[value]
+00	0
+01	1
+02	2
+03	3
+04	4
