@@ -24,7 +24,7 @@ AD		int	2012
 B8		asc	2013
 BC		asc	2014
 C0	C2	asc	2015
-C9		bin	2016
+C9		int	2016
 CB		int	2017
 CD		int	2018
 D1		int	2019
