@@ -216,6 +216,8 @@
 3001-0	?
 3001-1	Heim
 3001-2	Auswaerts
+3001-3	Heim (spielfrei)
+3001-4	Auswaerts (spielfrei)
 3002	Gegner
 3003	?
 3004	Mannschaftsergebnis
@@ -237,10 +239,13 @@
 3004-15	1
 3005	Tisch
 3006	Status
-3006-0	?
+3006-0	
 3006-1	kampflos
-3006-2	nicht gespielt
-3006-3	nicht eingesetzt (?)
+3006-4	kampflos
+3006-2	nicht eingesetzt
+3006-3	nicht eingesetzt
+3006-5	Haengepartie
+3006-6	Haengepartie
 3007	?
 3008	Brett
 	
