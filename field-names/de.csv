@@ -252,7 +252,9 @@
 4000	Farbe
 4000-0	?
 4000-1	Weiss
+4000-3	Weiss (spielfrei)
 4000-2	Schwarz
+4000-4	Schwarz (spielfrei)
 4001	Gegner
 4002	Einzelergebnis
 4002-0	?
