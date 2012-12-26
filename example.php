@@ -193,7 +193,7 @@ function swtparser_out_tabular($tournament, $field_names) {
 	$i = 0;
 	foreach (array_keys($tournament) as $key) {
 		$i++;
-		$output .= '<tr class="'.($i & 1 ? 'un' : '').'even"><th>'.($field_names[$key] ? $field_names[$key] : $key).'</th><td>';
+		$output .= '<tr class="'.($i & 1 ? 'un' : '').'even"><th>'.(isset($field_names[$key]) ? $field_names[$key] : $key).'</th><td>';
 		if (!is_array($tournament[$key])) {
 			$output .= (preg_match('/^\d+\-\d+$/', $tournament[$key]) && $field_names[$tournament[$key]] ? $field_names[$tournament[$key]] : $tournament[$key]);
 		} else {
@@ -252,7 +252,7 @@ function swtparser_out_info($data, $field_names) {
 	$head = reset($fixtures);
 	$head = reset($head);
 	foreach (array_keys($head) as $th) {
-		$output .= '<th>'.($field_names[$th] ? $field_names[$th] : $th).'</th>';
+		$output .= '<th>'.(isset($field_names[$th]) ? $field_names[$th] : $th).'</th>';
 	}
 	$output .= '</thead>';
 	foreach ($fixtures AS $player => $rounds) {
