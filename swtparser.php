@@ -88,17 +88,23 @@ function swtparser($filename) {
 	list($tournament['out']['Spieler'], $bin) = swtparser_records($contents, $tournament['out'], 'Spieler');
 	$tournament['bin'] = array_merge($tournament['bin'], $bin);
 
-	// team fixtures
+	// team fixtures, at least one round has to be fixed
 	//	Mannschaftspaarungen
-	if ($tournament['out'][35]) {
+	if ($tournament['out'][35] AND $tournament['out'][3]) {
 		list($tournament['out']['Mannschaftspaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Teams');
 		$tournament['bin'] = array_merge($tournament['bin'], $bin);
+	} else {
+		$tournament['out']['Mannschaftspaarungen'] = array();
 	}
 
-	// player fixtures
+	// player fixtures, at least one round has to be fixed
 	//	Einzelpaarungen
-	list($tournament['out']['Einzelpaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Spieler');
-	$tournament['bin'] = array_merge($tournament['bin'], $bin);
+	if ($tournament['out'][3]) {
+		list($tournament['out']['Einzelpaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Spieler');
+		$tournament['bin'] = array_merge($tournament['bin'], $bin);
+	} else {
+		$tournament['out']['Einzelpaarungen'] = array();
+	}
 	return $tournament;
 }
 
@@ -126,9 +132,14 @@ function swtparser_get_structure() {
  * @return array
  */
 function swtparser_records($contents, $tournament, $type = 'Spieler') {
-	$startval = (START_PARSING 
-		+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
-		+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
+	if ($tournament[3]) {
+		// there is at least one round fixed
+		$startval = (START_PARSING 
+			+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
+			+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
+	} else {
+		$startval = START_PARSING;
+	}
 	
 	switch ($type) {
 	case 'Spieler':
@@ -194,6 +205,7 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 		// Teams, starting with index 0
 		// Mannschaften, beginnend mit Index 0
 		if ($runde == 1) $index++;
+		if (!isset($ids[$index])) continue;
 		$id = $ids[$index];
 		$pos = $startval + $i * LEN_PAARUNG;
 		$data = zzparse_interpret($contents, $structfile, $pos, LEN_PAARUNG);
