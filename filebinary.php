@@ -72,6 +72,8 @@ function filebinary($filename, $markings = array()) {
 			$char = '.';
 		} elseif ($byte === '7F') {
 			$char = '.';
+		} elseif ($byte === '20') {
+			$char = '&nbsp;';
 		}
 
 		// mark binary data we have info about
