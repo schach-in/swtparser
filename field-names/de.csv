@@ -83,7 +83,7 @@
 65	Turniername
 66	Ort/Land
 67	Schiedsrichter
-68	Weitere Schiedsrichter
+68	Weitere Schiedsrichter (1/4)
 69	Bemerkung
 70	Datum Start
 71	Datum Ende
@@ -121,6 +121,10 @@
 84-12	Drei-Punkte-Farbwertung
 84-13	Berliner Wertung
 84-14	Schmuljan-Wertung
+85	Weitere Schiedsrichter (2/4)
+86	Weitere Schiedsrichter (3/4)
+87	Weitere Schiedsrichter (4/4)
+88	Turnierorganisator
 	
 1000	Mannschaftsname
 1001	FIDE-Elo-Schnitt
