@@ -8,7 +8,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @author Jacob Roggon, jacob@koenige.org
+ * @author Jacob Roggon
  * @copyright Copyright © 2005 Gustaf Mossakowski, Jacob Roggon
  * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0

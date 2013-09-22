@@ -8,7 +8,7 @@
  *
  * @author Falco Nogatz, fnogatz@gmail.com
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @author Jacob Roggon, jacob@koenige.org
+ * @author Jacob Roggon
  * @copyright Copyright © 2012 Falco Nogatz
  * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
