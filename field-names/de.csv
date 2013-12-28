@@ -93,8 +93,8 @@
 75	Maximal speicherbare Mannschaften (MaxMann)
 76	?- Spieler/Mannschaft *2
 77	Spieler/Mannschaft
-78	Farbe des 1. Spl. in Runde 1 (00, 01 = Weiß, FF = Schwarz)
-79	Farbe Brt. 1 der Heim-Mannsch. (00 = Schwarz, FF = Weiß)
+78	Farbe des 1. Spl. in Runde 1 (00, 01 = Weiß, 11 = ?, FF = Schwarz)
+79	Farbe Brt. 1 der Heim-Mannsch. (00 = Schwarz, 22 = ?, FF = Weiß)
 80	Mannschaftszahl
 81	Einzelergebnis-Wertung
 81-0	Sieg=1, Remis=0.5

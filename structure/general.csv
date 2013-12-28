@@ -85,8 +85,8 @@ F5	130	asc	12
 52C		int	75
 52E		int	76
 52F		int	77
-530		boo	78
-531		boo	79
+530		bin	78
+531		bin	79
 534		int	80
 538		sel	81
 53A		sel	82
