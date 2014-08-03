@@ -10,7 +10,7 @@
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
  * @copyright Copyright © 2012 Falco Nogatz
- * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012-2014 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
@@ -134,9 +134,14 @@ function swtparser_get_structure() {
 function swtparser_records($contents, $tournament, $type = 'Spieler') {
 	if ($tournament[3]) {
 		// there is at least one round fixed
-		$startval = (START_PARSING 
-			+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
-			+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
+		if ($tournament['out'][35]) {
+			$startval = (START_PARSING 
+				+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
+				+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
+		} else {
+			$startval = (START_PARSING 
+				+ ($tournament[4] * $tournament[1] * LEN_PAARUNG));
+		}
 	} else {
 		$startval = START_PARSING;
 	}
@@ -244,5 +249,3 @@ function swtparser_get_field_names($language) {
 	}
 	return $field_names;
 }
-
-?>
