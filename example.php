@@ -53,14 +53,17 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 
 <?php
 
-$dir = 'data';
-$files = swtparser_files($dir);
-$filename = '';
-if (!empty($_GET['file']) AND in_array($_GET['file'], $files)) {
-	$filename = $_GET['file'];
+if (!isset($dir)) {
+	$dir = 'data';
+	$files = swtparser_files($dir);
+	$filename = '';
+	if (!empty($_GET['file']) AND in_array($_GET['file'], $files)) {
+		$filename = $_GET['file'];
+	}
+	$own = 'example.php';
 }
 
-if (!$filename) {
+if (empty($filename)) {
 	// choose a file from existing files
 	// Datei aus den bestehenden Dateien auswählen
 	if ($files) {
@@ -72,7 +75,7 @@ der folgenden Dateien aus: </p>
 <?php
 
 		foreach ($files as $file) {
-			echo '<li><a href="example.php?file='.urlencode($file).'">'
+			echo '<li><a href="'.$own.'?file='.urlencode($file).'">'
 				.htmlspecialchars($file).'<a/></li>'."\n";
 		}
 
@@ -94,11 +97,13 @@ In dem Verzeichnis <code><?php echo $dir; ?></code> gibt es keine SWT-Dateien zu
 
 <p>Current file is: <?php echo htmlspecialchars($filename); ?> /
 Die aktuelle Datei ist: <?php echo htmlspecialchars($filename); ?></p>
-<p><a href="example.php">Choose a different file / Eine andere Datei auswählen</a></p>
+<?php if ($dir === 'data') { ?>
+<p><a href="<?php echo $own; ?>">Choose a different file / Eine andere Datei auswählen</a></p>
+<?php } ?>
 
 <ul>
-<li><a href="example.php?file=<?php echo htmlspecialchars($filename); ?>&amp;view=data">Data view / Datenansicht</a></li>
-<li><a href="example.php?file=<?php echo htmlspecialchars($filename); ?>&amp;view=binary">Binary view / Binäransicht</a></li>
+<li><a href="<?php echo $own; ?>?file=<?php echo htmlspecialchars($filename); ?>&amp;view=data">Data view / Datenansicht</a></li>
+<li><a href="<?php echo $own; ?>?file=<?php echo htmlspecialchars($filename); ?>&amp;view=binary">Binary view / Binäransicht</a></li>
 </ul>
 
 <?php
