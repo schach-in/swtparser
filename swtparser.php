@@ -134,7 +134,7 @@ function swtparser_get_structure() {
 function swtparser_records($contents, $tournament, $type = 'Spieler') {
 	if ($tournament[3]) {
 		// there is at least one round fixed
-		if ($tournament['out'][35]) {
+		if ($tournament[35]) {
 			$startval = (START_PARSING 
 				+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
 				+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
