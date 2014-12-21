@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012, 2014 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -101,13 +101,6 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 
 	foreach ($structure as $line) {
 		$substring = zzparse_binpos($binary, $line['begin'], $line['end']);
-		$const = false;
-		if (strtoupper($line['content']) === $line['content']
-			AND substr($line['content'], 0, 1) === '_'
-			AND substr($line['content'], -1) === '_') {
-			$const = true;
-			$line['content'] = substr($line['content'], 1, -1);
-		}
 		$data['bin'][] = array(
 			'begin' => hexdec($line['begin']) + $start, 
 			'end' => ($line['end'] ? hexdec($line['end']) : hexdec($line['begin'])) + $start,
@@ -163,6 +156,7 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			} else {
 				$data['out'][$line['content']] = $selection[$value];
 			}
+			break;
 		}
 	}
 	return $data;
@@ -226,5 +220,3 @@ function zzparse_tonullbyte($val) {
 	}
 	return $output;
 }
-
-?>
