@@ -58,13 +58,14 @@ function swtparser($filename) {
 	// read common tournament data
 	// Allgemeine Turnierdaten auslesen
 	$tournament = zzparse_interpret($contents, 'general');
+	define('FILEVERSION', $tournament['out'][9999]);
 
 	$structure = swtparser_get_structure();
 
 	// common data lengths
 	// Allgemeine Datenlängen
 	define('LEN_PAARUNG', $structure['length:pairing']);
-	if ($tournament['out'][9999] >= 800) {
+	if (FILEVERSION >= 800) {
 		// Mannschaftsturnier mit zusätzlichen Mannschaftsdaten
 		define('START_PARSING', $structure['start:fixtures_players']); // = 0x3448
 		define('LEN_SPIELER_KARTEI', $structure['length:player']);		// = 0x28F
