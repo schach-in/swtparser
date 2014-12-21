@@ -10,7 +10,7 @@
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
  * @copyright Copyright © 2005 Gustaf Mossakowski, Jacob Roggon
- * @copyright Copyright © 2005, 2012 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012, 2014 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -25,8 +25,7 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 
 .nullbyte	{ color: #AAA; }
 .code		{ font-family: monospace; }
-.code th	{ text-align: right; }
-.code td	{ padding-right: .75em; }
+.code .head	{ text-align: right; display: inline-block; width: 3em; padding: .15em 0; }
 .code .bin	{ background: #c96b3d; }
 .code .asc	{ background: #db9255; }
 .code .b2a	{ background: #edc27c; }
@@ -121,7 +120,7 @@ if (!empty($_GET['view'])) {
 <?php
 
 		require_once 'filebinary.php';
-		echo filebinary($dir.'/'.$filename, $tournament['bin']);
+		echo filebinary($dir.'/'.$filename, $tournament['bin'], 'de');
 		break;
 
 	case 'data':
@@ -277,5 +276,3 @@ function swtparser_out_info($data, $field_names) {
 	$output .= '</table>';
 	return $output;
 }
-
-?>

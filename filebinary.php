@@ -8,7 +8,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @copyright Copyright © 2012 Gustaf Mossakowski
+ * @copyright Copyright © 2012, 2014 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -26,13 +26,15 @@ ini_set('max_execution_time', 960);
  *		string content (will be used for title-attribute)
  * @return string HTML output
  */
-function filebinary($filename, $markings = array()) {
+function filebinary($filename, $markings = array(), $lang = false) {
 	if (!$filename) {
 		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
 		return false;
 	}
 	$content = file_get_contents($filename);
 	if (!$content) return false;
+	
+	$field_names = $lang ? swtparser_get_field_names($lang) : array();
 
 	if ($markings) {
 		foreach ($markings as $data) {
@@ -80,6 +82,9 @@ function filebinary($filename, $markings = array()) {
 		if (in_array($pos, array_keys($bin_markings))) {
 			$class['byte'] = $bin_markings[$pos]['type'];
 			$title = $bin_markings[$pos]['content'];
+			if ($field_names) {
+				$title = $title.' '.$field_names[$title];
+			}
 			// show until stop mark
 			$stop = $bin_markings[$pos]['end'];
 		} elseif ($stop >= $pos) {
@@ -94,8 +99,8 @@ function filebinary($filename, $markings = array()) {
 		if (floor(($pos - 1)/16) < $line) {
 			// beginning of line
 			if ($class['char']) $char = '<em class="'.$class['char'].'">'.$char;
-			if ($class['byte']) $byte = '<em class="'.$class['byte']
-				.($title ? '" title="'.$title : '').'">'.$byte;
+			if ($class['byte']) $byte = '<em class="'.$class['byte'].'"'
+				.($title ? ' title="'.$title.'"' : '').'>'.$byte;
 		} else {
 			// middle or end of line
 			foreach ($areas as $area) {
@@ -132,16 +137,12 @@ function filebinary($filename, $markings = array()) {
 		$lines[$line]['chars'] .= $char;
 		$lines[$line]['bytes'] .= $byte.' ';
 	}
-	$output = '<table class="code">';
+	$output = '<pre class="code">';
+	$tpl = "<span class='head'>%s0:</span>&nbsp; %s&nbsp; %s \n";
 	foreach ($lines as $pos => $values) {
 		$pos = strtoupper(dechex($pos));
-		$output .= '<tr><th>'.$pos.'0:</th>
-			<td>'.$values['bytes'].'</td>
-			<td>'.$values['chars'].'</td>
-			</tr>';
+		$output .= sprintf($tpl, $pos, $values['bytes'], $values['chars']);
 	}
-	$output .= '</table>';
+	$output .= '</pre>';
 	return $output;
 }
-
-?>
