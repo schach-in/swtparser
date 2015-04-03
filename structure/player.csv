@@ -1,6 +1,6 @@
 # Zugzwang Project: SWT parser
 # http://www.zugzwang.org/projects/swtparser
-# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012, 2015
 # @author Falco Nogatz, <fnogatz@gmail.com>, 2012, 2013
 #
 # Definition file for player data
@@ -27,11 +27,11 @@ C0	C2	asc	2015
 C9		int	2016
 CB		int	2017
 CD		int	2018
-D1		int	2019
-D9		bin	2020
-DB		int	2021
-DD		int	2022
-DF		int	2023
+D1	D2	inb	2019
+D9	DA	bib	2020
+DB	DC	inb	2021
+DD	DE	inb	2022
+DF	E0	inb	2023
 E1		int	2024
 E3		int	2025
 E5		int	2026
