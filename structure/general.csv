@@ -1,6 +1,6 @@
 # Zugzwang Project: SWT parser
 # http://www.zugzwang.org/projects/swtparser
-# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012
+# @author Gustaf Mossakowski, <gustaf@koenige.org>, 2005, 2012, 2015
 # @author Falco Nogatz, <fnogatz@gmail.com>, 2012
 #
 # Definition file for common tournament data
@@ -10,7 +10,7 @@
 1		int	1
 3		int	2
 5		int	3
-7		int	4
+7	8	inb	4
 9		int	5
 B		int	6
 AF		int	7
