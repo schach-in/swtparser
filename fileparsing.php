@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @copyright Copyright © 2005, 2012, 2014 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012, 2014-2015 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -120,6 +120,11 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			$data['out'][$line['content']] = zzparse_binary($substring);
 			break;
 
+		case 'bib':
+			// Content is binary value, big endian
+			$data['out'][$line['content']] = zzparse_binary(strrev($substring));
+			break;
+
 		case 'b2a':
 			// Content is hexadecimal value
 			$data['out'][$line['content']] = hexdec(zzparse_binary($substring));
@@ -201,6 +206,11 @@ function zzparse_binary($val) {
 	foreach ($bytes as $byte) {
 		if (strlen($byte) == 1) $byte = '0'.$byte;
 		$output[] = strtoupper($byte);
+	}
+	// remove beginning 00
+	while (reset($output) === '00') {
+		if (count($output) < 2) break;
+		array_shift($output);
 	}
 	$output = implode(' ', $output);
 	return $output;
