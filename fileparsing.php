@@ -149,6 +149,26 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 				default: $data['out'][$line['content']] = NULL; break;
 			}
 			break;
+
+		case 'dat':
+			// Content is date
+			// Days since 12/30/1899, big endian
+			$days = hexdec(bin2hex(strrev($substring)));
+			if ($days > 0) {
+				$date = strtotime('12/30/1899');
+				$date = strtotime('+'.$days.' day', $date);
+				$data['out'][$line['content']] = date('d.m.Y', $date);
+			}
+			break;
+
+		case 'tim':
+			// Content is time
+			if (zzparse_binary($substring) != '00') {
+				$hours = str_pad(hexdec(bin2hex($substring[0])), 2, '0', STR_PAD_LEFT);
+				$minutes = str_pad(hexdec(bin2hex($substring[1])), 2, '0', STR_PAD_LEFT);
+				$data['out'][$line['content']] = $hours.':'.$minutes;
+			}
+			break;
 		
 		case 'sel':
 			$area = strtolower($line['content']);
