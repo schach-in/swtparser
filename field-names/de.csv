@@ -1,6 +1,6 @@
 [field]	[name]
 9999	_FILEVERSION_
-1	maximale Runden
+1	Anzahl der Runden
 2	aktuelle Runde
 3	ausgeloste Runden
 4	Teilnehmerzahl
@@ -93,13 +93,18 @@
 75	Maximal speicherbare Mannschaften (MaxMann)
 76	?- Spieler/Mannschaft *2
 77	Spieler/Mannschaft
-78	Farbe des 1. Spl. in Runde 1 (00, 01 = Weiß, 11 = ?, FF = Schwarz)
-79	Farbe Brt. 1 der Heim-Mannsch. (00 = Schwarz, 22 = ?, FF = Weiß)
+78	Farbe des 1. Spl. bzw. Paarung der 1. Mannsch. in Runde 1
+78-0	Zufall
+78-1	Weiß bzw. Heim
+78-2	Schwarz bzw. Gast
+78-3	Schwarz
+79	Farbe Brt. 1 der Heim-Mannsch.
 80	Mannschaftszahl
 81	Einzelergebnis-Wertung
 81-0	Sieg=1, Remis=0.5
 81-1	Sieg=3, Remis=1
-81-2	Eigene Wertung
+81-2	Sieg=3, Remis mit Weiß: 1, Remis mit Schwarz: 1.5
+81-3	Eigene Wertung
 82	Mannschaftsergebnis-Wertung
 82-0	Sieg=2, Remis=1
 82-1	Sieg=3, Remis=1
@@ -121,11 +126,121 @@
 84-12	Drei-Punkte-Farbwertung
 84-13	Berliner Wertung
 84-14	Schmuljan-Wertung
+84-15	Anzahl der Siege
 85	Weitere Schiedsrichter (2/4)
 86	Weitere Schiedsrichter (3/4)
 87	Weitere Schiedsrichter (4/4)
 88	Turnierorganisator
-	
+89	1. Runde: Datum
+90	1. Runde: Uhrzeit
+91	2. Runde: Datum
+92	2. Runde: Uhrzeit
+93	3. Runde: Datum
+94	3. Runde: Uhrzeit
+95	4. Runde: Datum
+96	4. Runde: Uhrzeit
+97	5. Runde: Datum
+98	5. Runde: Uhrzeit
+99	6. Runde: Datum
+100	6. Runde: Uhrzeit
+101	7. Runde: Datum
+102	7. Runde: Uhrzeit
+103	8. Runde: Datum
+104	8. Runde: Uhrzeit
+105	9. Runde: Datum
+106	9. Runde: Uhrzeit
+107	10. Runde: Datum
+108	10. Runde: Uhrzeit
+109	11. Runde: Datum
+110	11. Runde: Uhrzeit
+111	12. Runde: Datum
+112	12. Runde: Uhrzeit
+113	13. Runde: Datum
+114	13. Runde: Uhrzeit
+115	14. Runde: Datum
+116	14. Runde: Uhrzeit
+117	15. Runde: Datum
+118	15. Runde: Uhrzeit
+119	16. Runde: Datum
+120	16. Runde: Uhrzeit
+121	17. Runde: Datum
+122	17. Runde: Uhrzeit
+123	18. Runde: Datum
+124	18. Runde: Uhrzeit
+125	19. Runde: Datum
+126	19. Runde: Uhrzeit
+127	20. Runde: Datum
+128	20. Runde: Uhrzeit
+129	21. Runde: Datum
+130	21. Runde: Uhrzeit
+131	22. Runde: Datum
+132	22. Runde: Uhrzeit
+133	23. Runde: Datum
+134	23. Runde: Uhrzeit
+135	24. Runde: Datum
+136	24. Runde: Uhrzeit
+137	25. Runde: Datum
+138	25. Runde: Uhrzeit
+139	26. Runde: Datum
+140	26. Runde: Uhrzeit
+141	27. Runde: Datum
+142	27. Runde: Uhrzeit
+143	28. Runde: Datum
+144	28. Runde: Uhrzeit
+145	29. Runde: Datum
+146	29. Runde: Uhrzeit
+147	30. Runde: Datum
+148	30. Runde: Uhrzeit
+149	31. Runde: Datum
+150	31. Runde: Uhrzeit
+151	32. Runde: Datum
+152	32. Runde: Uhrzeit
+153	33. Runde: Datum
+154	33. Runde: Uhrzeit
+155	34. Runde: Datum
+156	34. Runde: Uhrzeit
+157	35. Runde: Datum
+158	35. Runde: Uhrzeit
+159	36. Runde: Datum
+160	36. Runde: Uhrzeit
+161	37. Runde: Datum
+162	37. Runde: Uhrzeit
+163	38. Runde: Datum
+164	38. Runde: Uhrzeit
+165	39. Runde: Datum
+166	39. Runde: Uhrzeit
+167	40. Runde: Datum
+168	40. Runde: Uhrzeit
+169	Eigene Einzelergebnis-Wertung für Gewinn
+170	Eigene Einzelergebnis-Wertung für Gewinn mit Schwarz
+171	Eigene Einzelergebnis-Wertung für Remis
+172	Eigene Einzelergebnis-Wertung für Remis mit Schwarz
+173	Eigene Einzelergebnis-Wertung für Verlust
+174	Eigene Einzelergebnis-Wertung für kampflosen Verlust
+175	Eigene Mannschaftsergebnis-Wertung für Gewinn
+176	Eigene Mannschaftsergebnis-Wertung für Remis
+177	Eigene Mannschaftsergebnis-Wertung für Verlust
+178	Eigene Mannschaftsergebnis-Wertung für kampflosen Verlust
+179	Gewinnpartiendarstellung bei Mannschaften
+180	2. Wertung Einzelspieler [Rundenturnier]
+181	3. Wertung Einzelspieler [Rundenturnier]
+182	2. Wertung Mannschaft [Rundenturnier]
+183	3. Wertung Mannschaft [Rundenturnier]
+184	Sortierung der Startrangliste
+184-0	Alphabetisch
+184-1	Auslosen
+184-2	Elo oder NWZ / Alphabet (Elo vorrangig, wenn vorhanden)
+184-3	Elo oder NWZ / Auslosen (Elo vorrangig, wenn vorhanden)
+184-4	Vereinszugehörigkeit
+184-5	Elo vor NWZ / Auslosen
+184-6	Elo vor NWZ / Alphabet
+184-7	Alter (jung vor alt)
+184-8	Alter (alt vor jung)
+184-9	Elo oder NWZ / Auslosen (NWZ vorranging, wenn vorhanden)
+184-10	Elo oder NWZ / Alphabet (höchste Zahl wird genommen)
+184-11	Elo oder NWZ / Auslosen (höchste Zahl wird genommen)
+184-12	ZPS-Vereinskennzeichnung
+
 1000	Mannschaftsname
 1001	FIDE-Elo-Schnitt
 1002	DWZ-Schnitt

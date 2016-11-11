@@ -1,0 +1,9 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2013
+#
+# [bin]	[value]
+01	0
+11	1
+21	2
+22	3

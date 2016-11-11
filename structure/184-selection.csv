@@ -1,0 +1,20 @@
+# Zugzwang Project: SWT parser
+# http://www.zugzwang.org/projects/swtparser
+# @author Falco Nogatz, <fnogatz@gmail.com>, 2014
+#
+# Definition file sorting order of the seeding's list
+#
+# [bin]	[value]
+02	0
+03	1
+04	2
+05	3
+06	4
+08	5
+09	6
+0A	7
+0B	8
+0C	9
+0F	10
+0E	11
+10	12
