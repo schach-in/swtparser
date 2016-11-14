@@ -9,7 +9,7 @@
  * @author Falco Nogatz, fnogatz@gmail.com
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
- * @copyright Copyright © 2012 Falco Nogatz
+ * @copyright Copyright © 2012, 2016 Falco Nogatz
  * @copyright Copyright © 2005, 2012-2014 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
@@ -116,7 +116,7 @@ function swtparser($filename) {
  */
 function swtparser_get_structure() {
 	$array = array();
-	$rows = file(__DIR__.'/structure/structure.csv');
+	$rows = file(__DIR__.'/definitions/structure/structure.csv');
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
 		if (preg_match('/^\w/', $row[0])) $array[$row[0]] = $row[1];
@@ -241,7 +241,7 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
  */
 function swtparser_get_field_names($language) {
 	$field_names = array();
-	$rows = file(__DIR__.'/field-names/'.$language.'.csv');
+	$rows = file(__DIR__.'/definitions/field-names/'.$language.'.csv');
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
 		if (preg_match('/^\d/', $row[0])) {
