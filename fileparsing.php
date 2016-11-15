@@ -32,20 +32,7 @@ function zzparse_structure($part, $type = 'fields') {
 	// check if we already have read the structure for this part
 	if (!empty($structure[$part])) return $structure[$part];
 	
-	$dirs = array();
-	if (defined('FILEVERSION')) {
-		$max = strlen(FILEVERSION);
-		for ($i = 0; $i < $max; $i++) {
-			$dirs[] = '-v'.substr(FILEVERSION, 0, $max - $i)
-				.(str_repeat('x', $i));
-		}
-	}
-	$dirs[] = '';
-	foreach ($dirs as $dir) {
-		$filename = __DIR__.'/definitions/structure'.$dir.'/'.$part.'.csv';
-		if (!file_exists($filename)) $filename = '';
-		else break;
-	}
+	$filename = zzparse_get_filename($part.'.csv');
 	if (!$filename) {
 		die(sprintf('Structure file for <code>%s</code> does not exist.', $part));
 	}
@@ -249,4 +236,30 @@ function zzparse_tonullbyte($val) {
 		$output = $val;
 	}
 	return $output;
+}
+
+/**
+ * Gets the name of a file matching a given pattern
+ *
+ * @param string $pattern
+ * @return array
+ */
+function zzparse_get_filename($pattern) {
+	$dir = array_reduce(
+		glob(__DIR__.'/definitions/*/'.$pattern),
+		function ($prev_version, $filename) {
+			$version = intval(preg_replace('/^.*definitions\/([0-9]+)\/.*$/', '$1', $filename));
+			if ($version < $prev_version) {
+				return $prev_version;
+			}
+			if ($version > FILEVERSION) {
+				return $prev_version;
+			}
+			return $version;
+		},
+		0
+	);
+
+	$filename = __DIR__.'/definitions/'.$dir.'/'.$pattern;
+	return $filename;
 }

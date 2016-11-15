@@ -54,28 +54,22 @@ function swtparser($filename) {
 	}
 	$contents = file_get_contents($filename);
 	if (!$contents) return false;
-	
+
+	define('START_FILEVERSION', 261);
+	define('END_FILEVERSION', 262);
+	define('FILEVERSION', hexdec(bin2hex(strrev(zzparse_binpos($contents, START_FILEVERSION, END_FILEVERSION)))));
+
 	// read common tournament data
 	// Allgemeine Turnierdaten auslesen
 	$tournament = zzparse_interpret($contents, 'general');
-	define('FILEVERSION', $tournament['out'][9999]);
-
 	$structure = swtparser_get_structure();
 
 	// common data lengths
 	// Allgemeine Datenlängen
 	define('LEN_PAARUNG', $structure['length:pairing']);
-	if (FILEVERSION >= 800) {
-		// Mannschaftsturnier mit zusätzlichen Mannschaftsdaten
-		define('START_PARSING', $structure['start:fixtures_players']); // = 0x3448
-		define('LEN_SPIELER_KARTEI', $structure['length:player']);		// = 0x28F
-		define('LEN_MANNSCHAFT_KARTEI', $structure['length:team']);		// = 0x28F
-	} else {
-		// mind. Einzelturnier vor Version 8
-		define('START_PARSING', 3894);	// = 0xF36
-		define('LEN_SPIELER_KARTEI', 292);		// = 0x124
-		define('LEN_MANNSCHAFT_KARTEI', 292);		// = 0x124
-	}
+	define('START_PARSING', $structure['start:fixtures_players']);
+	define('LEN_SPIELER_KARTEI', $structure['length:player']);
+	define('LEN_MANNSCHAFT_KARTEI', $structure['length:team']);
 
 	// index card for teams
 	//	Karteikarten Mannschaften
@@ -115,12 +109,15 @@ function swtparser($filename) {
  * @return array
  */
 function swtparser_get_structure() {
+	$filename = zzparse_get_filename('structure.csv');
+
 	$array = array();
-	$rows = file(__DIR__.'/definitions/structure/structure.csv');
+	$rows = file($filename);
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
 		if (preg_match('/^\w/', $row[0])) $array[$row[0]] = $row[1];
 	}
+
 	return $array;
 }
 
