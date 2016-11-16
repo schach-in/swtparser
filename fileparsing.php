@@ -155,9 +155,9 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			// Days since 12/30/1899, big endian
 			$days = hexdec(bin2hex(strrev($substring)));
 			if ($days > 0) {
-				$date = strtotime('12/30/1899');
-				$date = strtotime('+'.$days.' day', $date);
-				$data['out'][$line['content']] = date('d.m.Y', $date);
+				$date = date_create('1899-12-30');
+				date_modify($date, '+'.$days.' days');
+				$data['out'][$line['content']] = date_format($date, 'd.m.Y');
 			}
 			break;
 
