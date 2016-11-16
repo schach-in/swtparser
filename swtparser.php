@@ -134,11 +134,11 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
 		// there is at least one round fixed
 		if ($tournament[35]) {
 			$startval = (START_PARSING 
-				+ ($tournament[4] * $tournament[1] * LEN_PAARUNG)
-				+ ($tournament[80] * $tournament[1] * LEN_PAARUNG));
+				+ ($tournament[4] * $tournament[1] * $tournament[33] * LEN_PAARUNG)
+				+ ($tournament[80] * $tournament[1] * $tournament[33] * LEN_PAARUNG));
 		} else {
 			$startval = (START_PARSING 
-				+ ($tournament[4] * $tournament[1] * LEN_PAARUNG));
+				+ ($tournament[4] * $tournament[1] * $tournament[33] * LEN_PAARUNG));
 		}
 	} else {
 		$startval = START_PARSING;
@@ -189,14 +189,14 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 	
 	switch ($type) {
 	case 'Spieler':
-		$max_i = $tournament[1] * $tournament[4];
+		$max_i = $tournament[1] * $tournament[33] * $tournament[4];
 		$structfile = 'individual-pairings';
 		$name_field = 2000;
 		$opponent_field = 4001;
 		break;
 	case 'Teams':
-		$startval += $tournament[1] * $tournament[4] * LEN_PAARUNG;
-		$max_i = $tournament[1] * $tournament[80];
+		$startval += $tournament[1] * $tournament[33] * $tournament[4] * LEN_PAARUNG;
+		$max_i = $tournament[1] * $tournament[33] * $tournament[80];
 		$structfile = 'team-pairings';
 		$name_field = 1000;
 		$opponent_field = 3002;
