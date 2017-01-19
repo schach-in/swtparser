@@ -6,8 +6,8 @@
  * Part of »Zugzwang Project«
  * http://www.zugzwang.org/projects/swtparser
  *
- * @author Gustaf Mossakowski, gustaf@koenige.org
- * @copyright Copyright © 2005, 2012, 2014-2015 Gustaf Mossakowski
+ * @author Gustaf Mossakowski <gustaf@koenige.org>
+ * @copyright Copyright © 2005, 2012, 2014-2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -100,6 +100,9 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			// cuts starting byte with value 00 which marks the end of string, 
 			// rest is junk data
 			$data['out'][$line['content']] = zzparse_tonullbyte($substring);
+			if (ENCODING_OUT !== 'ISO-8859-1') {
+				$data['out'][$line['content']] = iconv('ISO-8859-1', ENCODING_OUT, $data['out'][$line['content']]); 
+			}
 			break;
 			
 		case 'bin':

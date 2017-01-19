@@ -10,7 +10,7 @@
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
  * @copyright Copyright © 2012, 2016 Falco Nogatz
- * @copyright Copyright © 2005, 2012-2014 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012-2014, 2016-2017 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
@@ -43,11 +43,12 @@ require_once 'fileparsing.php';
  * Parst ein SWT file aus SwissChess und gibt Daten in Liste zurück
  *
  * @param string $filename
+ * @param string $encoding output encoding, defaults to UTF-8, file is ISO-8859-1
  * @return array
  *		array 'out' data for further processing
  *		array 'bin' data for marking up binary output
  */
-function swtparser($filename) {
+function swtparser($filename, $encoding = 'UTF-8') {
 	if (!$filename) {
 		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
 		return false;
@@ -58,6 +59,7 @@ function swtparser($filename) {
 	define('START_FILEVERSION', 261);
 	define('END_FILEVERSION', 262);
 	define('FILEVERSION', hexdec(bin2hex(strrev(zzparse_binpos($contents, START_FILEVERSION, END_FILEVERSION)))));
+	define('ENCODING_OUT', $encoding);
 
 	// read common tournament data
 	// Allgemeine Turnierdaten auslesen
