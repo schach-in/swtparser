@@ -2,21 +2,21 @@
 
 /**
  * Example usage for SWT parser
- * Beispiel f¸r die Anwendung des SWT-Parsers
+ * Beispiel f√ºr die Anwendung des SWT-Parsers
  *
- * Part of ªZugzwang Project´
+ * Part of ¬ªZugzwang Project¬´
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
- * @copyright Copyright © 2005 Gustaf Mossakowski, Jacob Roggon
- * @copyright Copyright © 2005, 2012, 2014 Gustaf Mossakowski
+ * @copyright Copyright ¬© 2005 Gustaf Mossakowski, Jacob Roggon
+ * @copyright Copyright ¬© 2005, 2012, 2014, 2017 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
 ?>
 <!DOCTYPE html>
-<title>Example for SWT Parser / Beispiel f¸r SWT-Parser</title>
+<title>Example for SWT Parser / Beispiel f√ºr SWT-Parser</title>
 
 <style type="text/css">
 body		{ font-family: sans-serif; background: white; }
@@ -48,7 +48,7 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 
 </style>
 
-<h1>Example for SWT Parser / Beispiel f¸r SWT-Parser</h1>
+<h1>Example for SWT Parser / Beispiel f√ºr SWT-Parser</h1>
 
 <?php
 
@@ -64,11 +64,11 @@ if (!isset($dir)) {
 
 if (empty($filename)) {
 	// choose a file from existing files
-	// Datei aus den bestehenden Dateien ausw‰hlen
+	// Datei aus den bestehenden Dateien ausw√§hlen
 	if ($files) {
 ?>
 
-<p>Please choose from one of the following files: / Bitte w‰hlen Sie eine
+<p>Please choose from one of the following files: / Bitte w√§hlen Sie eine
 der folgenden Dateien aus: </p>
 <ul>
 <?php
@@ -97,12 +97,12 @@ In dem Verzeichnis <code><?php echo $dir; ?></code> gibt es keine SWT-Dateien zu
 <p>Current file is: <?php echo htmlspecialchars($filename); ?> /
 Die aktuelle Datei ist: <?php echo htmlspecialchars($filename); ?></p>
 <?php if ($dir === 'data') { ?>
-<p><a href="<?php echo $own; ?>">Choose a different file / Eine andere Datei ausw‰hlen</a></p>
+<p><a href="<?php echo $own; ?>">Choose a different file / Eine andere Datei ausw√§hlen</a></p>
 <?php } ?>
 
 <ul>
 <li><a href="<?php echo $own; ?>?file=<?php echo htmlspecialchars($filename); ?>&amp;view=data">Data view / Datenansicht</a></li>
-<li><a href="<?php echo $own; ?>?file=<?php echo htmlspecialchars($filename); ?>&amp;view=binary">Binary view / Bin‰ransicht</a></li>
+<li><a href="<?php echo $own; ?>?file=<?php echo htmlspecialchars($filename); ?>&amp;view=binary">Binary view / Bin√§ransicht</a></li>
 </ul>
 
 <?php
@@ -116,7 +116,7 @@ if (!empty($_GET['view'])) {
 	switch ($_GET['view']) {
 	case 'binary':
 ?>
-<h2>Binary view / Bin‰ransicht</h2>
+<h2>Binary view / Bin√§ransicht</h2>
 <?php
 
 		require_once 'filebinary.php';
@@ -185,7 +185,7 @@ function swtparser_files($dir) {
 
 /**
  * Shows a list of keys and their values
- * Zeigt eine Liste von Schl¸sseln und ihren Werten
+ * Zeigt eine Liste von Schl√ºsseln und ihren Werten
  *
  * @param array $tournament (returned array from swtparser())
  * @param array $field_names (returned array from swtparser_get_field_names())
@@ -211,7 +211,7 @@ function swtparser_out_tabular($tournament, $field_names) {
 
 /**
  * Shows general information about players and teams
- * Zeigt allgemeine Informationen ¸ber Spieler und Teams
+ * Zeigt allgemeine Informationen √ºber Spieler und Teams
  *
  * @param array $data (part of returned array from swtparser())
  * @param array $field_names (returned array from swtparser_get_field_names())
