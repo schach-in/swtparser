@@ -7,7 +7,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2005, 2012, 2014-2017 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012, 2014-2018 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -42,7 +42,7 @@ function zzparse_structure($part, $type = 'fields') {
 		case 'replacements': $elements = 2; break;
 		default: die('Not a valid choice for a structural file.');
 	}
-	$structure[$part] = array();
+	$structure[$part] = [];
 	foreach ($defs as $no => $def) {
 		if (substr($def, 0, 1) === '#') continue;
 		$def = rtrim($def);
@@ -81,19 +81,19 @@ function zzparse_structure($part, $type = 'fields') {
  */
 function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 	if ($end) $binary = substr($binary, $start, $end);
-	$data = array();
-	$data['out'] = array();
-	$data['bin'] = array();
+	$data = [];
+	$data['out'] = [];
+	$data['bin'] = [];
 	$structure = zzparse_structure($part);
 
 	foreach ($structure as $line) {
 		$substring = zzparse_binpos($binary, $line['begin'], $line['end']);
-		$data['bin'][] = array(
+		$data['bin'][] = [
 			'begin' => hexdec($line['begin']) + $start, 
 			'end' => ($line['end'] ? hexdec($line['end']) : hexdec($line['begin'])) + $start,
 			'type' => $line['type'],
 			'content' => $line['content']
-		);
+		];
 		switch (substr($line['type'], 0, 3)) {
 		case 'asc':
 			// Content is in ASCII format
@@ -205,7 +205,7 @@ function zzparse_binpos($val, $start, $end = false, $length = false) {
  * @return string
  */
 function zzparse_binary($val) {
-	$output = '';
+	$output = [];
 	$len = strlen($val);
 	for ($a = 0; $a < $len; $a++)
 		$bytes[] = bin2hex($val[$a]);
