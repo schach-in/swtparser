@@ -10,7 +10,7 @@
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
  * @copyright Copyright © 2005 Gustaf Mossakowski, Jacob Roggon
- * @copyright Copyright © 2005, 2012, 2014, 2017 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012, 2014, 2017, 2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -173,7 +173,7 @@ if (!empty($_GET['view'])) {
  * @return array list of files
  */
 function swtparser_files($dir) {
-	$files = array();
+	$files = [];
 	$handle = opendir($dir);
 	while ($file = readdir($handle)) {
 		if (substr($file, 0, 1) === '.') continue;

@@ -3,15 +3,15 @@
 /**
  * SWT parser: Parsing binary Swiss Chess Tournament files
  *
- * Part of »Zugzwang Project«
+ * Part of Â»Zugzwang ProjectÂ«
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Falco Nogatz, fnogatz@gmail.com
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
- * @copyright Copyright © 2012, 2016 Falco Nogatz
- * @copyright Copyright © 2005, 2012-2014, 2016-2017 Gustaf Mossakowski
- * @copyright Copyright © 2005 Jacob Roggon
+ * @copyright Copyright Â© 2012, 2016 Falco Nogatz
+ * @copyright Copyright Â© 2005, 2012-2014, 2016-2017, 2019 Gustaf Mossakowski
+ * @copyright Copyright Â© 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -40,7 +40,7 @@ require_once 'fileparsing.php';
 
 /**
  * Parses an SWT file from SwissChess and returns data in an array
- * Parst ein SWT file aus SwissChess und gibt Daten in Liste zurück
+ * Parst ein SWT file aus SwissChess und gibt Daten in Liste zurÃ¼ck
  *
  * @param string $filename
  * @param string $encoding output encoding, defaults to UTF-8, file is ISO-8859-1
@@ -50,7 +50,7 @@ require_once 'fileparsing.php';
  */
 function swtparser($filename, $encoding = 'UTF-8') {
 	if (!$filename) {
-		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
+		echo '<p>Please choose a filename! / Bitte wÃ¤hlen Sie einen Dateinamen aus!</p>';
 		return false;
 	}
 	$contents = file_get_contents($filename);
@@ -67,7 +67,7 @@ function swtparser($filename, $encoding = 'UTF-8') {
 	$structure = swtparser_get_structure();
 
 	// common data lengths
-	// Allgemeine Datenlängen
+	// Allgemeine DatenlÃ¤ngen
 	define('LEN_PAARUNG', $structure['length:pairing']);
 	define('START_PARSING', $structure['start:fixtures_players']);
 	define('LEN_SPIELER_KARTEI', $structure['length:player']);
@@ -91,7 +91,7 @@ function swtparser($filename, $encoding = 'UTF-8') {
 		list($tournament['out']['Mannschaftspaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Teams');
 		$tournament['bin'] = array_merge($tournament['bin'], $bin);
 	} else {
-		$tournament['out']['Mannschaftspaarungen'] = array();
+		$tournament['out']['Mannschaftspaarungen'] = [];
 	}
 
 	// player fixtures, at least one round has to be fixed
@@ -100,7 +100,7 @@ function swtparser($filename, $encoding = 'UTF-8') {
 		list($tournament['out']['Einzelpaarungen'], $bin) = swtparser_fixtures($contents, $tournament['out'], 'Spieler');
 		$tournament['bin'] = array_merge($tournament['bin'], $bin);
 	} else {
-		$tournament['out']['Einzelpaarungen'] = array();
+		$tournament['out']['Einzelpaarungen'] = [];
 	}
 	return $tournament;
 }
@@ -113,7 +113,7 @@ function swtparser($filename, $encoding = 'UTF-8') {
 function swtparser_get_structure() {
 	$filename = zzparse_get_filename('structure.csv');
 
-	$array = array();
+	$array = [];
 	$rows = file($filename);
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
@@ -160,8 +160,8 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
 		break;
 	}
 
-	$records = array();
-	$bin = array();
+	$records = [];
+	$bin = [];
 	for ($i = 0; $i < $maxval; $i++) {
 		$data = zzparse_interpret($contents, $structfile, $startval + $i * $len_kartei, $len_kartei);
 		$bin = array_merge($bin, $data['bin']);
@@ -171,7 +171,7 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
 			$records[$data['out'][2020]] = $data['out'];
 		}
 	}
-	return array($records, $bin);
+	return [$records, $bin];
 }
 
 /**
@@ -183,7 +183,7 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
  * @return array [player ID][round] = data
  */
 function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
-	$fixtures = array();
+	$fixtures = [];
 	$runde = 1;
 	$ids = array_keys($tournament[$type]);
 	$index = -1;
@@ -205,7 +205,7 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 		break;
 	}
 	
-	$bin = array();
+	$bin = [];
 	for ($i = 0; $i < $max_i; $i++) {
 		// Teams, starting with index 0
 		// Mannschaften, beginnend mit Index 0
@@ -228,7 +228,7 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
 		if ($runde == $tournament[1]) $runde = 1; 
 		else $runde++;
 	}
-	return array($fixtures, $bin);
+	return [$fixtures, $bin];
 }
 
 /**
@@ -239,7 +239,7 @@ function swtparser_fixtures($contents, $tournament, $type = 'Spieler') {
  * @return array field names
  */
 function swtparser_get_field_names($language) {
-	$field_names = array();
+	$field_names = [];
 	$rows = file(__DIR__.'/definitions/field-names/'.$language.'.csv');
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");

@@ -8,7 +8,7 @@
  * http://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski, gustaf@koenige.org
- * @copyright Copyright © 2012, 2014 Gustaf Mossakowski
+ * @copyright Copyright © 2012, 2014, 2019 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -26,7 +26,7 @@ ini_set('max_execution_time', 960);
  *		string content (will be used for title-attribute)
  * @return string HTML output
  */
-function filebinary($filename, $markings = array(), $lang = false) {
+function filebinary($filename, $markings = [], $lang = false) {
 	if (!$filename) {
 		echo '<p>Please choose a filename! / Bitte wählen Sie einen Dateinamen aus!</p>';
 		return false;
@@ -34,7 +34,7 @@ function filebinary($filename, $markings = array(), $lang = false) {
 	$content = file_get_contents($filename);
 	if (!$content) return false;
 	
-	$field_names = $lang ? swtparser_get_field_names($lang) : array();
+	$field_names = $lang ? swtparser_get_field_names($lang) : [];
 
 	if ($markings) {
 		foreach ($markings as $data) {
@@ -44,11 +44,11 @@ function filebinary($filename, $markings = array(), $lang = false) {
 	}
 
 	$stop = -1;
-	$class = array();
+	$class = [];
 	$class['byte'] = '';
 	$class['char'] = '';
 	$title = '';
-	$areas = array('char', 'byte');
+	$areas = ['char', 'byte'];
 
 	$len = strlen($content);
 	for ($pos = 0; $pos < $len; $pos++) {
