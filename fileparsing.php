@@ -130,6 +130,11 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 			$data['out'][$line['content']] = hexdec(bin2hex(strrev($substring)));
 			break;
 
+		case 'in9':
+			// Content is integer value, big endian, minus 998
+			$data['out'][$line['content']] = hexdec(bin2hex(strrev($substring))) - 998;
+			break;
+
 		case 'boo':
 			// Content is boolean
 			$substring = chop(zzparse_binary($substring));

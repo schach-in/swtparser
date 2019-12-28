@@ -166,7 +166,7 @@ function swtparser_records($contents, $tournament, $type = 'Spieler') {
 		$data = zzparse_interpret($contents, $structfile, $startval + $i * $len_kartei, $len_kartei);
 		$bin = array_merge($bin, $data['bin']);
 		if ($type === 'Teams') {
-			$records[$data['out'][1018]] = $data['out'];
+			$records[$data['out'][1019]] = $data['out'];
 		} else {
 			$records[$data['out'][2020]] = $data['out'];
 		}
