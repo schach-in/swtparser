@@ -26,10 +26,12 @@ th			{ text-align: left; padding-right: .75em; vertical-align: top; }
 .nullbyte	{ color: #AAA; }
 .code		{ font-family: monospace; }
 .code .head	{ text-align: right; display: inline-block; width: 3em; padding: .15em 0; }
-.code .bin	{ background: #c96b3d; }
+.code .bin, .code .bib
+			{ background: #c96b3d; }
 .code .asc	{ background: #db9255; }
 .code .b2a	{ background: #edc27c; }
-.code .int	{ background: #f2dca9; }
+.code .int, .code .inb, .code .in9
+			{ background: #f2dca9; }
 .code .boo	{ background: #a8a889; }
 .code .sel	{ background: #bbbbbb; }
 .code em	{ font-style: normal; }
