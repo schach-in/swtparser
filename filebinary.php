@@ -122,8 +122,7 @@ function filebinary($filename, $markings = [], $lang = false) {
 				}
 			}
 		}
-		if (($stop AND floor(($pos + 1)/16) > $line)
-			OR $pos === count($content)-1) {
+		if (($stop AND floor(($pos + 1)/16) > $line)) {
 			// end of line
 			if ($class['char']) $char .= '</em>';
 			if ($class['byte']) $byte .= '</em>';
