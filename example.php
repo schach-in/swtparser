@@ -19,9 +19,9 @@
 <title>Example for SWT Parser / Beispiel für SWT-Parser</title>
 
 <style type="text/css">
-body		{ font-family: sans-serif; background: white; }
 dt			{ font-weight: bold; }
 th			{ text-align: left; padding-right: .75em; vertical-align: top; }
+.tabledata	{ max-width: 100%; overflow: auto; }
 
 .nullbyte	{ color: #AAA; }
 .code		{ font-family: monospace; }
@@ -193,7 +193,7 @@ function swtparser_files($dir) {
  * @see swtparser()
  */
 function swtparser_out_tabular($tournament, $field_names) {
-	$output = '<table class="data">';
+	$output = '<div class="tabledata"><table class="data">';
 	$i = 0;
 	foreach (array_keys($tournament) as $key) {
 		$i++;
@@ -205,7 +205,7 @@ function swtparser_out_tabular($tournament, $field_names) {
 		}
 		$output .= '</td></tr>'."\n";
 	}
-	$output .= '</table>';
+	$output .= '</table></div>';
 	return $output;
 }
 
@@ -220,7 +220,7 @@ function swtparser_out_tabular($tournament, $field_names) {
  */
 function swtparser_out_info($data, $field_names) {
 	if (!$data) return '<p>No data available. / Keine Daten vorhanden.</p>';
-	$output = '<table class="data"><thead><th>ID</th>';
+	$output = '<div class="tabledata"><table class="data"><thead><th>ID</th>';
 	$head = reset($data);
 	foreach (array_keys($head) as $th) {
 		$output .= '<th><span>'.($field_names[$th] ? $field_names[$th] : $th).'</span></th>';
@@ -235,7 +235,7 @@ function swtparser_out_info($data, $field_names) {
 		}
 		$output .= '</tr>';
 	}
-	$output .= '</tbody></table>';
+	$output .= '</tbody></table></div>';
 	return $output;
 }
 
@@ -249,10 +249,10 @@ function swtparser_out_info($data, $field_names) {
  * @param array $field_names (returned array from swtparser_get_field_names())
  * @return string HTML output
  */
- function swtparser_out_fixtures($fixtures, $title = 'Paarungen', $id = 'paarungen', $field_names = array()) {
+ function swtparser_out_fixtures($fixtures, $title = 'Paarungen', $id = 'paarungen', $field_names = []) {
 	if (!$fixtures) return '<p>No data available. / Keine Daten vorhanden.</p>';
 	$output = '<h2 id="'.$id.'">'.$title.'</h2>';
-	$output .= '<table class="data"><thead><th>Round / Runde</th>';
+	$output .= '<div class="tabledata"><table class="data"><thead><th>Round / Runde</th>';
 	$head = reset($fixtures);
 	$head = reset($head);
 	foreach (array_keys($head) as $th) {
@@ -273,6 +273,6 @@ function swtparser_out_info($data, $field_names) {
 		}
 		$output .= '<tr><td>&nbsp;</td><td></td></tr>';
 	}
-	$output .= '</table>';
+	$output .= '</table></div>';
 	return $output;
 }
