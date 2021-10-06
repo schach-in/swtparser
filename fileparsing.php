@@ -1,13 +1,14 @@
 <?php 
 
 /**
+ * SWT parser
  * Parsing functions for reading binary files
  *
- * Part of »Zugzwang Project«
- * http://www.zugzwang.org/projects/swtparser
+ * Part of Â»Zugzwang ProjectÂ«
+ * https://www.zugzwang.org/projects/swtparser
  *
  * @author Gustaf Mossakowski <gustaf@koenige.org>
- * @copyright Copyright © 2005, 2012, 2014-2018 Gustaf Mossakowski
+ * @copyright Copyright Â© 2005, 2012, 2014-2018, 2021 Gustaf Mossakowski
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
 
@@ -90,7 +91,7 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 		$substring = zzparse_binpos($binary, $line['begin'], $line['end']);
 		$data['bin'][] = [
 			'begin' => hexdec($line['begin']) + $start, 
-			'end' => ($line['end'] ? hexdec($line['end']) : hexdec($line['begin'])) + $start,
+			'end' => ($line['end'] ? hexdec(rtrim($line['end'], '+')) : hexdec($line['begin'])) + $start,
 			'type' => $line['type'],
 			'content' => $line['content']
 		];
@@ -195,6 +196,7 @@ function zzparse_interpret($binary, $part, $start = 0, $end = false) {
 function zzparse_binpos($val, $start, $end = false, $length = false) {
 	// if it's only one byte long, end = start
 	if (!$end) $end = $start;
+	$end = rtrim($end, '+'); // what was this for?
 	if ($length) {
 		$output = substr($val, hexdec($start), $length);
 	} else {
