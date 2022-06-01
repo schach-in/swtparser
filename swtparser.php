@@ -4,13 +4,13 @@
  * SWT parser: Parsing binary Swiss Chess Tournament files
  *
  * Part of »Zugzwang Project«
- * http://www.zugzwang.org/projects/swtparser
+ * https://www.zugzwang.org/projects/swtparser
  *
  * @author Falco Nogatz, fnogatz@gmail.com
  * @author Gustaf Mossakowski, gustaf@koenige.org
  * @author Jacob Roggon
  * @copyright Copyright © 2012, 2016 Falco Nogatz
- * @copyright Copyright © 2005, 2012-2014, 2016-2017, 2019 Gustaf Mossakowski
+ * @copyright Copyright © 2005, 2012-2014, 2016-2017, 2019, 2022 Gustaf Mossakowski
  * @copyright Copyright © 2005 Jacob Roggon
  * @license http://opensource.org/licenses/lgpl-3.0.html LGPL-3.0
  */
@@ -243,7 +243,7 @@ function swtparser_get_field_names($language) {
 	$rows = file(__DIR__.'/definitions/field-names/'.$language.'.csv');
 	for ($i = 0; $i < count($rows); $i++) {
 		$row = str_getcsv($rows[$i], "\t");
-		if (preg_match('/^\d/', $row[0])) {
+		if ($row[0] AND preg_match('/^\d/', $row[0])) {
 			$field_names[$row[0]] = $row[1];
 		}
 	}
