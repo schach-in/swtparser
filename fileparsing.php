@@ -29,7 +29,7 @@
  * @see zzparse_interpret()
  */
 function zzparse_structure($part, $type = 'fields') {
-	static $structure;
+	static $structure = [];
 	// check if we already have read the structure for this part
 	if (!empty($structure[$part])) return $structure[$part];
 	
